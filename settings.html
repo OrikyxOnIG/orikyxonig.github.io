@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Orikyx DevSec Hub</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav ul li {
+            padding: 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Buttons and Settings Section */
+        .setting-button {
+            padding: 12px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .setting-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+            .setting-button {
+                width: 100%;
+            }
+        }
+
+        /* Transitions and Animations */
+        .setting-button {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#general-settings">General Settings</a></li>
+            <li><a href="#theme-settings">Theme Settings</a></li>
+            <li><a href="#font-settings">Font Settings</a></li>
+            <li><a href="#notifications-settings">Notifications</a></li>
+            <li><a href="#footer-settings">Footer Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <section id="general-settings">
+            <h1>General Settings</h1>
+            <div class="button-container">
+                <button class="setting-button" id="theme-default">Default Theme</button>
+                <button class="setting-button" id="theme-dark">Dark Theme</button>
+                <button class="setting-button" id="theme-light">Light Theme</button>
+            </div>
+        </section>
+
+        <section id="theme-settings">
+            <h1>Theme Settings</h1>
+            <div class="button-container">
+                <button class="setting-button" id="color-blue">Blue Color</button>
+                <button class="setting-button" id="color-red">Red Color</button>
+                <button class="setting-button" id="color-green">Green Color</button>
+                <button class="setting-button" id="color-black">Black Color</button>
+            </div>
+        </section>
+
+        <section id="font-settings">
+            <h1>Font Settings</h1>
+            <div class="button-container">
+                <button class="setting-button" id="font-small">Small Font</button>
+                <button class="setting-button" id="font-medium">Medium Font</button>
+                <button class="setting-button" id="font-large">Large Font</button>
+            </div>
+        </section>
+
+        <section id="notifications-settings">
+            <h1>Notifications Settings</h1>
+            <div class="button-container">
+                <button class="setting-button" id="show-notifications">Enable Notifications</button>
+                <button class="setting-button" id="disable-notifications">Disable Notifications</button>
+            </div>
+        </section>
+
+        <section id="footer-settings">
+            <h1>Footer Settings</h1>
+            <div class="button-container">
+                <button class="setting-button" id="show-footer">Show Footer</button>
+                <button class="setting-button" id="hide-footer">Hide Footer</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript for Settings Functionality -->
+    <script>
+        // Load settings from localStorage if they exist
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme') || 'default';
+            const savedFontSize = localStorage.getItem('font-size') || 'medium';
+            applySettings(savedTheme, savedFontSize);
+        };
+
+        // Apply settings function
+        function applySettings(theme, fontSize) {
+            document.body.className = theme + ' ' + fontSize;
+        }
+
+        // Event listeners for buttons
+        document.getElementById('theme-default').addEventListener('click', function() {
+            localStorage.setItem('theme', 'default');
+            applySettings('default', localStorage.getItem('font-size') || 'medium');
+        });
+
+        document.getElementById('theme-dark').addEventListener('click', function() {
+            localStorage.setItem('theme', 'dark');
+            applySettings('dark', localStorage.getItem('font-size') || 'medium');
+        });
+
+        document.getElementById('theme-light').addEventListener('click', function() {
+            localStorage.setItem('theme', 'light');
+            applySettings('light', localStorage.getItem('font-size') || 'medium');
+        });
+
+        document.getElementById('font-small').addEventListener('click', function() {
+            localStorage.setItem('font-size', 'small');
+            applySettings(localStorage.getItem('theme') || 'default', 'small');
+        });
+
+        document.getElementById('font-medium').addEventListener('click', function() {
+            localStorage.setItem('font-size', 'medium');
+            applySettings(localStorage.getItem('theme') || 'default', 'medium');
+        });
+
+        document.getElementById('font-large').addEventListener('click', function() {
+            localStorage.setItem('font-size', 'large');
+            applySettings(localStorage.getItem('theme') || 'default', 'large');
+        });
+
+        document.getElementById('show-notifications').addEventListener('click', function() {
+            localStorage.setItem('notifications', 'enabled');
+            alert("Notifications enabled!");
+        });
+
+        document.getElementById('disable-notifications').addEventListener('click', function() {
+            localStorage.setItem('notifications', 'disabled');
+            alert("Notifications disabled!");
+        });
+
+        document.getElementById('show-footer').addEventListener('click', function() {
+            localStorage.setItem('footer', 'show');
+            alert("Footer shown.");
+        });
+
+        document.getElementById('hide-footer').addEventListener('click', function() {
+            localStorage.setItem('footer', 'hide');
+            alert("Footer hidden.");
+        });
+    </script>
+</body>
+</html>
