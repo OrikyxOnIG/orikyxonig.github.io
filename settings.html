@@ -307,22 +307,60 @@ function changeLanguage(language) {
     localStorage.setItem('language', language);
 }
 
-// Function to enable/disable background music
-function toggleMusic() {
-    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
-    const music = new Audio('Juice WRLD - Cuffed (Official Audio).mp3');
-    music.loop = true;
+// Function to initialize and control background music
+function initializeMusic() {
+    let music = document.getElementById("background-music");
+
+    // Create audio element if it doesn’t exist
+    if (!music) {
+        music = document.createElement("audio");
+        music.id = "background-music";
+        music.src = "Juice WRLD - Cuffed (Official Audio).mp3"; // Update with the correct file path
+        music.loop = true; // Ensures the song loops forever
+        music.volume = 0.5; // Adjust volume if needed (0.0 to 1.0)
+        document.body.appendChild(music);
+    }
+
+    // Check localStorage for music state
+    const musicEnabled = localStorage.getItem("musicEnabled") === "true";
+
+    if (musicEnabled) {
+        music.play();
+    } else {
+        music.pause();
+    }
+
+    return music; // Return the audio object for later control
+}
+
+// Function to toggle music playback
+function toggleMusic(music) {
+    const musicEnabled = localStorage.getItem("musicEnabled") === "true";
 
     if (musicEnabled) {
         music.pause();
-        localStorage.setItem('musicEnabled', 'false');
-        document.getElementById('music-toggle').textContent = 'Turn On';
+        localStorage.setItem("musicEnabled", "false");
     } else {
         music.play();
-        localStorage.setItem('musicEnabled', 'true');
-        document.getElementById('music-toggle').textContent = 'Turn Off';
+        localStorage.setItem("musicEnabled", "true");
     }
 }
+
+// Initialize the music on page load
+window.onload = function () {
+    const music = initializeMusic(); // Initialize the music when the page loads
+
+    // Event listener for toggling the music
+    document.getElementById("music-toggle").addEventListener("click", function () {
+        toggleMusic(music);
+        const currentState = localStorage.getItem("musicEnabled") === "true" ? "Turn Off" : "Turn On";
+        document.getElementById("music-toggle").textContent = currentState;
+    });
+
+    // Ensure the toggle button text is correct based on the music state
+    const currentState = localStorage.getItem("musicEnabled") === "true" ? "Turn Off" : "Turn On";
+    document.getElementById("music-toggle").textContent = currentState;
+};
 
 // Function to enable/disable sound effects
 function toggleSoundEffects() {
