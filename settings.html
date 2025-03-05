@@ -16,24 +16,49 @@
             color: #333;
         }
 
-        /* RGB Background Animation */
+        
+        /* Default RGB Animation */
         @keyframes rgbBackground {
-            0% {
-                background-color: rgb(255, 0, 0); /* Red */
-            }
-            25% {
-                background-color: rgb(0, 255, 0); /* Green */
-            }
-            50% {
-                background-color: rgb(0, 0, 255); /* Blue */
-            }
-            75% {
-                background-color: rgb(255, 255, 0); /* Yellow */
-            }
-            100% {
-                background-color: rgb(255, 165, 0); /* Orange */
-            }
+            0% { background-color: rgb(255, 0, 0); } /* Red */
+            25% { background-color: rgb(0, 255, 0); } /* Green */
+            50% { background-color: rgb(0, 0, 255); } /* Blue */
+            75% { background-color: rgb(255, 255, 0); } /* Yellow */
+            100% { background-color: rgb(255, 165, 0); } /* Orange */
         }
+
+/* Dark Theme RGB Animation */
+        @keyframes darkRgbBackground {
+            0% { background-color: rgb(20, 0, 0); } /* Dark Red */
+            25% { background-color: rgb(0, 20, 0); } /* Dark Green */
+            50% { background-color: rgb(0, 0, 30); } /* Dark Blue */
+            75% { background-color: rgb(30, 0, 30); } /* Dark Purple */
+            100% { background-color: rgb(30, 30, 0); } /* Dark Yellow */
+        }
+
+/* Light Theme RGB Animation */
+         @keyframes lightRgbBackground {
+             0% { background-color: rgb(255, 255, 255); } /* White */
+            25% { background-color: rgb(173, 216, 230); } /* Baby Blue */
+            50% { background-color: rgb(255, 255, 0); } /* Yellow */
+            75% { background-color: rgb(57, 255, 20); } /* Neon Green */
+            100% { background-color: rgb(255, 165, 0); } /* Orange */
+        }
+
+        /* Apply animations based on body class */
+        body.default-theme {
+            animation: rgbBackground 10s infinite alternate;
+        }
+        
+        body.dark-theme {
+            animation: darkRgbBackground 10s infinite alternate;
+            color: white;
+        }
+        
+        body.light-theme {
+            animation: lightRgbBackground 10s infinite alternate;
+            color: black;
+        }
+
 
         /* Navigation Styles */
         nav {
@@ -152,9 +177,10 @@
         <section id="general-settings">
             <h1>General Settings</h1>
             <div class="button-container">
-                <button class="setting-button" id="theme-default">Default Theme</button>
-                <button class="setting-button" id="theme-dark">Dark Theme</button>
-                <button class="setting-button" id="theme-light">Light Theme</button>
+                <button class="setting-button theme-btn" data-theme="default">Default Theme</button>
+                <button class="setting-button theme-btn" data-theme="dark">Dark Theme</button>
+                <button class="setting-button theme-btn" data-theme="light">Light Theme</button>
+
             </div>
         </section>
 
@@ -193,239 +219,150 @@
             </div>
         </section>
 
-        <div class="language-settings">
-            <label for="language-select">Language:</label>
-            <select id="language-select">
-                <option value="en">English</option>
-                <option value="es">Spanish</option>
-                <option value="fr">French</option>
-  </select>
-</div>
-        <div class="music-settings">
-            <label for="music-toggle">Background Music:</label>
-            <button id="music-toggle">Turn On</button>
-        </div>
-
-    <div class="soundeffects-settings">
-      <label for="sound-toggle">Sound Effects:</label>
-      <button id="sound-toggle">Turn On</button>
+        <section id="language-settings">
+    <h1>Language Settings</h1>
+    <div class="button-container">
+        <button class="setting-button lang-btn" data-lang="en">English</button>
+        <button class="setting-button lang-btn" data-lang="es">Español</button>
+        <button class="setting-button lang-btn" data-lang="fr">Français</button>
     </div>
+</section>
+
+<section id="music-settings">
+    <h1>Background Music</h1>
+    <div class="button-container">
+        <button class="setting-button" id="music-toggle">Turn On Music</button>
+    </div>
+</section>
+
+<section id="sound-settings">
+    <h1>Sound Effects</h1>
+    <div class="button-container">
+        <button class="setting-button" id="sound-toggle">Turn On Sound Effects</button>
+    </div>
+</section>
+
+
 
     </div>
 
     <!-- JavaScript for Settings Functionality -->
     <script>
-        // Load settings from localStorage if they exist
-        window.onload = function() {
-            const savedTheme = localStorage.getItem('theme') || 'default';
-            const savedFontSize = localStorage.getItem('font-size') || 'medium';
-            applySettings(savedTheme, savedFontSize);
-        };
+        document.addEventListener("DOMContentLoaded", function () {
+    // 🌍 APPLY SAVED SETTINGS ON PAGE LOAD
+    function applySettings() {
+        document.body.classList.add(localStorage.getItem("theme") || "default");
+        document.body.classList.add(localStorage.getItem("font-size") || "medium");
+        document.documentElement.lang = localStorage.getItem("selectedLanguage") || "en";
 
-        // Apply settings function
-        function applySettings(theme, fontSize) {
-            document.body.className = theme + ' ' + fontSize;
+        // Footer visibility
+        if (localStorage.getItem("footer") === "hide") {
+            document.getElementById("footer").style.display = "none";
+        } else {
+            document.getElementById("footer").style.display = "block";
         }
+    }
+    applySettings();
 
-        // Event listeners for buttons
-        document.getElementById('theme-default').addEventListener('click', function() {
-            localStorage.setItem('theme', 'default');
-            applySettings('default', localStorage.getItem('font-size') || 'medium');
+    // 🌈 THEME SETTINGS
+    document.querySelectorAll('.theme-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        let theme = button.getAttribute('data-theme');
+        document.body.className = theme;
+    });
+});
+                document.getElementById('theme-default').addEventListener('click', function() {
+        document.body.className = 'default-theme';
+    });
+    
+    document.getElementById('theme-dark').addEventListener('click', function() {
+        document.body.className = 'dark-theme';
+    });
+    
+    document.getElementById('theme-light').addEventListener('click', function() {
+        document.body.className = 'light-theme';
+    });
+
+
+
+    // 🔠 FONT SIZE SETTINGS
+    document.querySelectorAll(".font-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+            let fontSize = this.dataset.font;
+            localStorage.setItem("font-size", fontSize);
+            document.body.classList.add(fontSize);
         });
+    });
 
-        document.getElementById('theme-dark').addEventListener('click', function() {
-            localStorage.setItem('theme', 'dark');
-            applySettings('dark', localStorage.getItem('font-size') || 'medium');
+    // 🔔 NOTIFICATION SETTINGS
+    document.getElementById("show-notifications").addEventListener("click", function () {
+        localStorage.setItem("notifications", "enabled");
+        alert("Notifications enabled!");
+    });
+
+    document.getElementById("disable-notifications").addEventListener("click", function () {
+        localStorage.setItem("notifications", "disabled");
+        alert("Notifications disabled!");
+    });
+
+    // 🌍 LANGUAGE SELECTION
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+            let lang = this.dataset.lang;
+            localStorage.setItem("selectedLanguage", lang);
+            document.documentElement.lang = lang;
+            location.reload(); // Apply changes across pages
         });
+    });
 
-        document.getElementById('theme-light').addEventListener('click', function() {
-            localStorage.setItem('theme', 'light');
-            applySettings('light', localStorage.getItem('font-size') || 'medium');
-        });
-
-        document.getElementById('font-small').addEventListener('click', function() {
-            localStorage.setItem('font-size', 'small');
-            applySettings(localStorage.getItem('theme') || 'default', 'small');
-        });
-
-        document.getElementById('font-medium').addEventListener('click', function() {
-            localStorage.setItem('font-size', 'medium');
-            applySettings(localStorage.getItem('theme') || 'default', 'medium');
-        });
-
-        document.getElementById('font-large').addEventListener('click', function() {
-            localStorage.setItem('font-size', 'large');
-            applySettings(localStorage.getItem('theme') || 'default', 'large');
-        });
-
-        document.getElementById('show-notifications').addEventListener('click', function() {
-            localStorage.setItem('notifications', 'enabled');
-            alert("Notifications enabled!");
-        });
-
-        document.getElementById('disable-notifications').addEventListener('click', function() {
-            localStorage.setItem('notifications', 'disabled');
-            alert("Notifications disabled!");
-        });
-
-        document.getElementById('show-footer').addEventListener('click', function() {
-            localStorage.setItem('footer', 'show');
-            alert("Footer shown.");
-        });
-
-        document.getElementById('hide-footer').addEventListener('click', function() {
-            localStorage.setItem('footer', 'hide');
-            alert("Footer hidden.");
-        });
-
-// Function to apply the language change
-function changeLanguage(language) {
-    const content = {
-        'en': {
-            'welcome': 'Welcome to the Website',
-            'tutorial': 'Start Learning Programming',
-            'settings': 'Settings'
-        },
-        'es': {
-            'welcome': 'Bienvenido al sitio web',
-            'tutorial': 'Comienza a aprender programación',
-            'settings': 'Configuración'
-        },
-        'fr': {
-            'welcome': 'Bienvenue sur le site web',
-            'tutorial': 'Commencez à apprendre la programmation',
-            'settings': 'Paramètres'
-        }
-    };
-
-    // Update text content on the page based on selected language
-    document.querySelectorAll('.welcome-text').forEach(el => el.textContent = content[language]['welcome']);
-    document.querySelectorAll('.tutorial-text').forEach(el => el.textContent = content[language]['tutorial']);
-    document.querySelectorAll('.settings-text').forEach(el => el.textContent = content[language]['settings']);
-
-    // Save language to localStorage
-    localStorage.setItem('language', language);
-}
-
-// Function to initialize and control background music
-function initializeMusic() {
-    let music = document.getElementById("background-music");
-
-    // Create audio element if it doesn’t exist
-    if (!music) {
-        music = document.createElement("audio");
+    // 🎵 BACKGROUND MUSIC TOGGLE
+    let music = document.getElementById("background-music") || document.createElement("audio");
+    if (!document.getElementById("background-music")) {
         music.id = "background-music";
-        music.src = "Juice WRLD - Cuffed (Official Audio).mp3"; // Update with the correct file path
-        music.loop = true; // Ensures the song loops forever
-        music.volume = 0.5; // Adjust volume if needed (0.0 to 1.0)
+        music.src = "path/to/your/music.mp3"; // Replace with actual file
+        music.loop = true;
         document.body.appendChild(music);
     }
 
-    // Check localStorage for music state
-    const musicEnabled = localStorage.getItem("musicEnabled") === "true";
-
-    if (musicEnabled) {
+    let musicToggleBtn = document.getElementById("music-toggle");
+    if (localStorage.getItem("musicEnabled") === "true") {
         music.play();
-    } else {
-        music.pause();
+        musicToggleBtn.textContent = "Turn Off Music";
     }
 
-    return music; // Return the audio object for later control
-}
-
-// Function to toggle music playback
-function toggleMusic(music) {
-    const musicEnabled = localStorage.getItem("musicEnabled") === "true";
-
-    if (musicEnabled) {
-        music.pause();
-        localStorage.setItem("musicEnabled", "false");
-    } else {
-        music.play();
-        localStorage.setItem("musicEnabled", "true");
-    }
-}
-
-// Initialize the music on page load
-window.onload = function () {
-    const music = initializeMusic(); // Initialize the music when the page loads
-
-    // Event listener for toggling the music
-    document.getElementById("music-toggle").addEventListener("click", function () {
-        toggleMusic(music);
-        const currentState = localStorage.getItem("musicEnabled") === "true" ? "Turn Off" : "Turn On";
-        document.getElementById("music-toggle").textContent = currentState;
+    musicToggleBtn.addEventListener("click", function () {
+        if (music.paused) {
+            music.play();
+            localStorage.setItem("musicEnabled", "true");
+            this.textContent = "Turn Off Music";
+        } else {
+            music.pause();
+            localStorage.setItem("musicEnabled", "false");
+            this.textContent = "Turn On Music";
+        }
     });
 
-    // Ensure the toggle button text is correct based on the music state
-    const currentState = localStorage.getItem("musicEnabled") === "true" ? "Turn Off" : "Turn On";
-    document.getElementById("music-toggle").textContent = currentState;
-};
-
-// Function to enable/disable sound effects
-function toggleSoundEffects() {
-    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
-
-    if (soundEnabled) {
-        disableSoundEffects();
-        localStorage.setItem('soundEnabled', 'false');
-        document.getElementById('sound-toggle').textContent = 'Turn On';
-    } else {
-        enableSoundEffects();
-        localStorage.setItem('soundEnabled', 'true');
-        document.getElementById('sound-toggle').textContent = 'Turn Off';
-    }
-}
-
-// Enable sound effects
-function enableSoundEffects() {
-    document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', function () {
-            const clickSound = new Audio('path/to/click-sound.mp3');
-            clickSound.play();
-        });
+    // 🔊 SOUND EFFECTS TOGGLE
+    let soundToggleBtn = document.getElementById("sound-toggle");
+    soundToggleBtn.addEventListener("click", function () {
+        let soundEnabled = localStorage.getItem("soundEnabled") === "true";
+        localStorage.setItem("soundEnabled", !soundEnabled);
+        this.textContent = soundEnabled ? "Turn On Sound Effects" : "Turn Off Sound Effects";
     });
-}
 
-// Disable sound effects
-function disableSoundEffects() {
-    document.querySelectorAll('button').forEach(button => {
-        button.removeEventListener('click', function () {});
+    // 📢 PLAY SOUND EFFECT FUNCTION
+    function playSoundEffect() {
+        if (localStorage.getItem("soundEnabled") === "true") {
+            let sound = new Audio("Juice WrLD - Cuffed (Official Audio).mp3"); // Replace with actual file
+            sound.play();
+        }
+    }
+
+    // Add sound effect to all buttons
+    document.querySelectorAll(".setting-button").forEach((btn) => {
+        btn.addEventListener("click", playSoundEffect);
     });
-}
-
-// On page load, check for stored settings and apply them
-window.onload = function() {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    changeLanguage(savedLanguage);
-    document.getElementById('language-select').value = savedLanguage;
-
-    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
-    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
-
-    if (musicEnabled) {
-        document.getElementById('music-toggle').textContent = 'Turn Off';
-        // Implement background music logic here
-    } else {
-        document.getElementById('music-toggle').textContent = 'Turn On';
-    }
-
-    if (soundEnabled) {
-        enableSoundEffects();
-        document.getElementById('sound-toggle').textContent = 'Turn Off';
-    } else {
-        disableSoundEffects();
-        document.getElementById('sound-toggle').textContent = 'Turn On';
-    }
-};
-
-// Event listeners for changes
-document.getElementById('language-select').addEventListener('change', function() {
-    changeLanguage(this.value);
 });
-
-document.getElementById('music-toggle').addEventListener('click', toggleMusic);
-document.getElementById('sound-toggle').addEventListener('click', toggleSoundEffects);
 
     </script>
 </body>
