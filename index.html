@@ -292,6 +292,116 @@
     window.onload = function() {
         applySettings();
     };
+
+        'es': {function changeLanguage(language) {
+    const content = {
+        'en': {
+            'welcome': 'Welcome to the Website',
+            'tutorial': 'Start Learning Programming',
+            'settings': 'Settings'
+        },
+            'welcome': 'Bienvenido al sitio web',
+            'tutorial': 'Comienza a aprender programación',
+            'settings': 'Configuración'
+        },
+        'fr': {
+            'welcome': 'Bienvenue sur le site web',
+            'tutorial': 'Commencez à apprendre la programmation',
+            'settings': 'Paramètres'
+        }
+    };
+
+    // Update text content on the page based on selected language
+    document.querySelectorAll('.welcome-text').forEach(el => el.textContent = content[language]['welcome']);
+    document.querySelectorAll('.tutorial-text').forEach(el => el.textContent = content[language]['tutorial']);
+    document.querySelectorAll('.settings-text').forEach(el => el.textContent = content[language]['settings']);
+
+    // Save language to localStorage
+    localStorage.setItem('language', language);
+}
+
+// Function to enable/disable background music
+function toggleMusic() {
+    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
+    const music = new Audio('Juice WRLD - Cuffed (Official Audio).mp3');
+    music.loop = true;
+
+    if (musicEnabled) {
+        music.pause();
+        localStorage.setItem('musicEnabled', 'false');
+        document.getElementById('music-toggle').textContent = 'Turn On';
+    } else {
+        music.play();
+        localStorage.setItem('musicEnabled', 'true');
+        document.getElementById('music-toggle').textContent = 'Turn Off';
+    }
+}
+
+// Function to enable/disable sound effects
+function toggleSoundEffects() {
+    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
+
+    if (soundEnabled) {
+        disableSoundEffects();
+        localStorage.setItem('soundEnabled', 'false');
+        document.getElementById('sound-toggle').textContent = 'Turn On';
+    } else {
+        enableSoundEffects();
+        localStorage.setItem('soundEnabled', 'true');
+        document.getElementById('sound-toggle').textContent = 'Turn Off';
+    }
+}
+
+// Enable sound effects
+function enableSoundEffects() {
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', function () {
+            const clickSound = new Audio('path/to/click-sound.mp3');
+            clickSound.play();
+        });
+    });
+}
+
+// Disable sound effects
+function disableSoundEffects() {
+    document.querySelectorAll('button').forEach(button => {
+        button.removeEventListener('click', function () {});
+    });
+}
+
+// On page load, check for stored settings and apply them
+window.onload = function() {
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    changeLanguage(savedLanguage);
+    document.getElementById('language-select').value = savedLanguage;
+
+    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
+    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
+
+    if (musicEnabled) {
+        document.getElementById('music-toggle').textContent = 'Turn Off';
+        // Implement background music logic here
+    } else {
+        document.getElementById('music-toggle').textContent = 'Turn On';
+    }
+
+    if (soundEnabled) {
+        enableSoundEffects();
+        document.getElementById('sound-toggle').textContent = 'Turn Off';
+    } else {
+        disableSoundEffects();
+        document.getElementById('sound-toggle').textContent = 'Turn On';
+    }
+};
+
+// Event listeners for changes
+document.getElementById('language-select').addEventListener('change', function() {
+    changeLanguage(this.value);
+});
+
+document.getElementById('music-toggle').addEventListener('click', toggleMusic);
+document.getElementById('sound-toggle').addEventListener('click', toggleSoundEffects);
+
     </script>
 </body>
 </html>
