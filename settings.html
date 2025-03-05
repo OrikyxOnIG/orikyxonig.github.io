@@ -278,81 +278,7 @@
             alert("Footer hidden.");
         });
 
-        // Define music and sound effect elements
-const music = new Audio('Juice WRLD - Cuffed (Official Audio).mp3');
-music.loop = true; // Make it loop
-
-// Check if music and sound effects were previously enabled
-window.onload = function() {
-    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
-    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
-
-    // Apply the preferences
-    if (musicEnabled) {
-        music.play();
-        document.getElementById('music-toggle').textContent = 'Turn Off';
-    } else {
-        document.getElementById('music-toggle').textContent = 'Turn On';
-    }
-
-    if (soundEnabled) {
-        // Activate sound effects (e.g., button clicks, hover sounds)
-        enableSoundEffects();
-        document.getElementById('sound-toggle').textContent = 'Turn Off';
-    } else {
-        disableSoundEffects();
-        document.getElementById('sound-toggle').textContent = 'Turn On';
-    }
-};
-
-// Handle music toggle
-document.getElementById('music-toggle').addEventListener('click', function() {
-    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
-    if (musicEnabled) {
-        music.pause();
-        localStorage.setItem('musicEnabled', 'false');
-        this.textContent = 'Turn On';
-    } else {
-        music.play();
-        localStorage.setItem('musicEnabled', 'true');
-        this.textContent = 'Turn Off';
-    }
-});
-
-// Handle sound effects toggle
-document.getElementById('sound-toggle').addEventListener('click', function() {
-    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
-    if (soundEnabled) {
-        disableSoundEffects();
-        localStorage.setItem('soundEnabled', 'false');
-        this.textContent = 'Turn On';
-    } else {
-        enableSoundEffects();
-        localStorage.setItem('soundEnabled', 'true');
-        this.textContent = 'Turn Off';
-    }
-});
-
-// Enable sound effects (example function)
-function enableSoundEffects() {
-    // For example: Play a click sound on button clicks
-    document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', function() {
-            const clickSound = new Audio('path/to/click-sound.mp3');
-            clickSound.play();
-        });
-    });
-}
-
-// Disable sound effects (example function)
-function disableSoundEffects() {
-    // Remove the event listeners or don't play any sound on click
-    document.querySelectorAll('button').forEach(button => {
-        button.removeEventListener('click', function() {});
-    });
-}
-
-        // Function to change language
+// Function to apply the language change
 function changeLanguage(language) {
     const content = {
         'en': {
@@ -373,25 +299,95 @@ function changeLanguage(language) {
     };
 
     // Update text content on the page based on selected language
-    document.querySelector('.welcome-text').textContent = content[language]['welcome'];
-    document.querySelector('.tutorial-text').textContent = content[language]['tutorial'];
-    document.querySelector('.settings-text').textContent = content[language]['settings'];
+    document.querySelectorAll('.welcome-text').forEach(el => el.textContent = content[language]['welcome']);
+    document.querySelectorAll('.tutorial-text').forEach(el => el.textContent = content[language]['tutorial']);
+    document.querySelectorAll('.settings-text').forEach(el => el.textContent = content[language]['settings']);
 
     // Save language to localStorage
     localStorage.setItem('language', language);
 }
 
-// On page load, check if the user has a saved language preference
+// Function to enable/disable background music
+function toggleMusic() {
+    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
+    const music = new Audio('Juice WRLD - Cuffed (Official Audio).mp3');
+    music.loop = true;
+
+    if (musicEnabled) {
+        music.pause();
+        localStorage.setItem('musicEnabled', 'false');
+        document.getElementById('music-toggle').textContent = 'Turn On';
+    } else {
+        music.play();
+        localStorage.setItem('musicEnabled', 'true');
+        document.getElementById('music-toggle').textContent = 'Turn Off';
+    }
+}
+
+// Function to enable/disable sound effects
+function toggleSoundEffects() {
+    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
+
+    if (soundEnabled) {
+        disableSoundEffects();
+        localStorage.setItem('soundEnabled', 'false');
+        document.getElementById('sound-toggle').textContent = 'Turn On';
+    } else {
+        enableSoundEffects();
+        localStorage.setItem('soundEnabled', 'true');
+        document.getElementById('sound-toggle').textContent = 'Turn Off';
+    }
+}
+
+// Enable sound effects
+function enableSoundEffects() {
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', function () {
+            const clickSound = new Audio('path/to/click-sound.mp3');
+            clickSound.play();
+        });
+    });
+}
+
+// Disable sound effects
+function disableSoundEffects() {
+    document.querySelectorAll('button').forEach(button => {
+        button.removeEventListener('click', function () {});
+    });
+}
+
+// On page load, check for stored settings and apply them
 window.onload = function() {
     const savedLanguage = localStorage.getItem('language') || 'en';
     changeLanguage(savedLanguage);
     document.getElementById('language-select').value = savedLanguage;
+
+    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
+    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
+
+    if (musicEnabled) {
+        document.getElementById('music-toggle').textContent = 'Turn Off';
+        // Implement background music logic here
+    } else {
+        document.getElementById('music-toggle').textContent = 'Turn On';
+    }
+
+    if (soundEnabled) {
+        enableSoundEffects();
+        document.getElementById('sound-toggle').textContent = 'Turn Off';
+    } else {
+        disableSoundEffects();
+        document.getElementById('sound-toggle').textContent = 'Turn On';
+    }
 };
 
-// Listen for language selection change
+// Event listeners for changes
 document.getElementById('language-select').addEventListener('change', function() {
     changeLanguage(this.value);
 });
+
+document.getElementById('music-toggle').addEventListener('click', toggleMusic);
+document.getElementById('sound-toggle').addEventListener('click', toggleSoundEffects);
 
     </script>
 </body>
