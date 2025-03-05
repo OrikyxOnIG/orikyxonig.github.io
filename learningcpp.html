@@ -630,6 +630,69 @@ counter.fetch_add(1);
                 <a href="https://discord.gg/ZPXh9xUW8A" target="_blank">Discord Server</a>
             </div>
         </footer>
+        <script>
+    // Function to apply saved settings to the current page
+    function applySettings() {
+        // Get settings from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'default';
+        const savedFontSize = localStorage.getItem('font-size') || 'medium';
+        const savedNotifications = localStorage.getItem('notifications') || 'enabled';
+        const savedFooter = localStorage.getItem('footer') || 'show';
+
+        // Apply theme to body class
+        document.body.className = `${savedTheme} ${savedFontSize}`;
+
+        // Apply notification settings (this is a placeholder, modify as per your actual notification system)
+        if (savedNotifications === 'enabled') {
+            enableNotifications();
+        } else {
+            disableNotifications();
+        }
+
+        // Apply footer visibility setting
+        if (savedFooter === 'hide') {
+            hideFooter();
+        } else {
+            showFooter();
+        }
+    }
+
+    // Function to enable notifications (modify to suit your actual notification system)
+    function enableNotifications() {
+        // Placeholder for enabling notifications
+        console.log('Notifications enabled.');
+        // Add actual notification enabling code here
+    }
+
+    // Function to disable notifications
+    function disableNotifications() {
+        // Placeholder for disabling notifications
+        console.log('Notifications disabled.');
+        // Add actual notification disabling code here
+    }
+
+    // Function to show the footer (you can customize this to match your site's footer behavior)
+    function showFooter() {
+        const footer = document.querySelector('footer');
+        if (footer) {
+            footer.style.display = 'block';
+        }
+    }
+
+    // Function to hide the footer
+    function hideFooter() {
+        const footer = document.querySelector('footer');
+        if (footer) {
+            footer.style.display = 'none';
+        }
+    }
+
+    // Run applySettings on page load to ensure settings are applied across all pages
+    window.onload = function() {
+        applySettings();
+    };
+</script>
+
     </main>
 </body>
 </html>
