@@ -5,365 +5,231 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - Orikyx DevSec Hub</title>
     <style>
-        /* General Styles */
+        /* Basic styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            animation: rgbBackground 10s infinite alternate;
-            background-color: #f4f4f4;
-            color: #333;
+            transition: background-color 0.3s ease;
         }
 
-        
-        /* Default RGB Animation */
-        @keyframes rgbBackground {
-            0% { background-color: rgb(255, 0, 0); } /* Red */
-            25% { background-color: rgb(0, 255, 0); } /* Green */
-            50% { background-color: rgb(0, 0, 255); } /* Blue */
-            75% { background-color: rgb(255, 255, 0); } /* Yellow */
-            100% { background-color: rgb(255, 165, 0); } /* Orange */
-        }
-
-/* Dark Theme RGB Animation */
-        @keyframes darkRgbBackground {
-            0% { background-color: rgb(20, 0, 0); } /* Dark Red */
-            25% { background-color: rgb(0, 20, 0); } /* Dark Green */
-            50% { background-color: rgb(0, 0, 30); } /* Dark Blue */
-            75% { background-color: rgb(30, 0, 30); } /* Dark Purple */
-            100% { background-color: rgb(30, 30, 0); } /* Dark Yellow */
-        }
-
-/* Light Theme RGB Animation */
-         @keyframes lightRgbBackground {
-             0% { background-color: rgb(255, 255, 255); } /* White */
-            25% { background-color: rgb(173, 216, 230); } /* Baby Blue */
-            50% { background-color: rgb(255, 255, 0); } /* Yellow */
-            75% { background-color: rgb(57, 255, 20); } /* Neon Green */
-            100% { background-color: rgb(255, 165, 0); } /* Orange */
-        }
-
-        /* Apply animations based on body class */
         body.default-theme {
-            animation: rgbBackground 10s infinite alternate;
+            color: #fff;
+            animation: rgbBackground 10s infinite;
         }
-        
+
         body.dark-theme {
-            animation: darkRgbBackground 10s infinite alternate;
-            color: white;
+            color: #fff;
+            animation: rgbBackgroundDark 10s infinite;
         }
-        
+
         body.light-theme {
-            animation: lightRgbBackground 10s infinite alternate;
-            color: black;
+            color: #000;
+            animation: rgbBackgroundLight 10s infinite;
         }
 
+        @keyframes rgbBackground {
+            0% { background-color: rgb(255, 0, 0); }
+            25% { background-color: rgb(0, 255, 0); }
+            50% { background-color: rgb(0, 0, 255); }
+            75% { background-color: rgb(255, 255, 0); }
+            100% { background-color: rgb(255, 0, 255); }
+        }
 
-        /* Navigation Styles */
+        @keyframes rgbBackgroundDark {
+            0% { background-color: rgb(50, 0, 0); }
+            25% { background-color: rgb(0, 50, 0); }
+            50% { background-color: rgb(0, 0, 50); }
+            75% { background-color: rgb(50, 50, 0); }
+            100% { background-color: rgb(50, 0, 50); }
+        }
+
+        @keyframes rgbBackgroundLight {
+            0% { background-color: rgb(255, 128, 128); }
+            25% { background-color: rgb(128, 255, 128); }
+            50% { background-color: rgb(128, 128, 255); }
+            75% { background-color: rgb(255, 255, 128); }
+            100% { background-color: rgb(255, 128, 255); }
+        }
+
+        /* Navigation Styling */
         nav {
             background-color: #333;
-            color: white;
-            padding: 15px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        nav ul li {
             padding: 10px;
+            text-align: center;
         }
 
-        nav ul li a {
+        nav a {
             color: white;
+            margin: 0 15px;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 1.2em;
         }
 
-        nav ul li a:hover {
+        nav a:hover {
             text-decoration: underline;
         }
 
-        /* Main Content */
-        .content {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Section Styling */
+        section {
+            margin: 20px;
+            text-align: center;
         }
 
-        /* Buttons and Settings Section */
         .setting-button {
-            padding: 12px;
-            margin: 10px;
-            background-color: black;
+            padding: 10px;
+            background-color: #333;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            width: 100%;
-            box-sizing: border-box;
+            border-radius: 5px;
+            margin: 5px;
         }
 
         .setting-button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
+            background-color: #555;
         }
 
-        .button-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        h1 {
+        footer {
             text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 24px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            display: none;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .content {
-                padding: 10px;
-            }
-
-            .setting-button {
-                width: 100%;
-            }
+        footer.visible {
+            display: block;
         }
 
-        /* Transitions and Animations */
-        .setting-button {
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Menu -->
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="downloads.html">Downloads</a></li>
-            <li><a href="ps3programming.html">PS3 Programming</a></li>
-            <li><a href="learningcode.html">Learning Code</a></li>
-            <li><a href="cybersecurity.html">Cybersecurity</a></li>
-        </ul>
+        <a href="index.html">Home</a>
+        <a href="ps3programming.html">PS3 Programming</a>
+        <a href="cybersecurity.html">Cybersecurity</a>
+        <a href="learningcode.html">Learning Code</a>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content">
-        <section id="general-settings">
-            <h1>General Settings</h1>
-            <div class="button-container">
-                <button class="setting-button theme-btn" data-theme="default">Default Theme</button>
-                <button class="setting-button theme-btn" data-theme="dark">Dark Theme</button>
-                <button class="setting-button theme-btn" data-theme="light">Light Theme</button>
+    <div>
+        <h1>Settings - Orikyx DevSec Hub</h1>
 
-            </div>
-        </section>
-
+        <!-- Theme Selection -->
         <section id="theme-settings">
-            <h1>Theme Settings</h1>
-            <div class="button-container">
-                <button class="setting-button" id="color-blue">Blue Color</button>
-                <button class="setting-button" id="color-red">Red Color</button>
-                <button class="setting-button" id="color-green">Green Color</button>
-                <button class="setting-button" id="color-black">Black Color</button>
-            </div>
+            <h2>Choose Theme</h2>
+            <button class="setting-button" id="default-theme">Default Theme</button>
+            <button class="setting-button" id="dark-theme">Dark Theme</button>
+            <button class="setting-button" id="light-theme">Light Theme</button>
         </section>
 
-        <section id="font-settings">
-            <h1>Font Settings</h1>
-            <div class="button-container">
-                <button class="setting-button" id="font-small">Small Font</button>
-                <button class="setting-button" id="font-medium">Medium Font</button>
-                <button class="setting-button" id="font-large">Large Font</button>
-            </div>
+        <!-- Music Toggle -->
+        <section id="music-settings">
+            <h2>Background Music</h2>
+            <button class="setting-button" id="music-toggle">Toggle Music</button>
         </section>
 
-        <section id="notifications-settings">
-            <h1>Notifications Settings</h1>
-            <div class="button-container">
-                <button class="setting-button" id="show-notifications">Enable Notifications</button>
-                <button class="setting-button" id="disable-notifications">Disable Notifications</button>
-            </div>
+        <!-- Sound Effects Toggle -->
+        <section id="sound-settings">
+            <h2>Sound Effects</h2>
+            <button class="setting-button" id="sound-toggle">Toggle Sound Effects</button>
         </section>
 
+        <!-- Footer Toggle -->
         <section id="footer-settings">
-            <h1>Footer Settings</h1>
-            <div class="button-container">
-                <button class="setting-button" id="show-footer">Show Footer</button>
-                <button class="setting-button" id="hide-footer">Hide Footer</button>
-            </div>
+            <h2>Footer Visibility</h2>
+            <button class="setting-button" id="show-footer">Show Footer</button>
+            <button class="setting-button" id="hide-footer">Hide Footer</button>
         </section>
-
-        <section id="language-settings">
-    <h1>Language Settings</h1>
-    <div class="button-container">
-        <button class="setting-button lang-btn" data-lang="en">English</button>
-        <button class="setting-button lang-btn" data-lang="es">Español</button>
-        <button class="setting-button lang-btn" data-lang="fr">Français</button>
-    </div>
-</section>
-
-<section id="music-settings">
-    <h1>Background Music</h1>
-    <div class="button-container">
-        <button class="setting-button" id="music-toggle">Turn On Music</button>
-    </div>
-</section>
-
-<section id="sound-settings">
-    <h1>Sound Effects</h1>
-    <div class="button-container">
-        <button class="setting-button" id="sound-toggle">Turn On Sound Effects</button>
-    </div>
-</section>
-
-
-
     </div>
 
-    <!-- JavaScript for Settings Functionality -->
+    <!-- Footer -->
+    <footer id="footer">
+        <p>© 2025 Orikyx DevSec Hub</p>
+    </footer>
+
+    <!-- Audio for Music -->
+    <audio id="background-music" loop>
+        <source src="your-music-file.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Sound Effect -->
+    <audio id="sound-effect">
+        <source src="your-sound-effect.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-    // 🌍 APPLY SAVED SETTINGS ON PAGE LOAD
-    function applySettings() {
-        document.body.classList.add(localStorage.getItem("theme") || "default");
-        document.body.classList.add(localStorage.getItem("font-size") || "medium");
-        document.documentElement.lang = localStorage.getItem("selectedLanguage") || "en";
 
-        // Footer visibility
-        if (localStorage.getItem("footer") === "hide") {
-            document.getElementById("footer").style.display = "none";
-        } else {
-            document.getElementById("footer").style.display = "block";
-        }
-    }
-    applySettings();
+            // Apply stored theme preference
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+            }
 
-    // 🌈 THEME SETTINGS
-    document.querySelectorAll('.theme-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        let theme = button.getAttribute('data-theme');
-        document.body.className = theme;
-    });
-});
-                document.getElementById('theme-default').addEventListener('click', function() {
-        document.body.className = 'default-theme';
-    });
-    
-    document.getElementById('theme-dark').addEventListener('click', function() {
-        document.body.className = 'dark-theme';
-    });
-    
-    document.getElementById('theme-light').addEventListener('click', function() {
-        document.body.className = 'light-theme';
-    });
+            // Theme change handlers
+            document.getElementById("default-theme").addEventListener("click", function () {
+                document.body.classList.remove("dark-theme", "light-theme");
+                document.body.classList.add("default-theme");
+                localStorage.setItem("theme", "default-theme");
+            });
 
+            document.getElementById("dark-theme").addEventListener("click", function () {
+                document.body.classList.remove("default-theme", "light-theme");
+                document.body.classList.add("dark-theme");
+                localStorage.setItem("theme", "dark-theme");
+            });
 
+            document.getElementById("light-theme").addEventListener("click", function () {
+                document.body.classList.remove("default-theme", "dark-theme");
+                document.body.classList.add("light-theme");
+                localStorage.setItem("theme", "light-theme");
+            });
 
-    // 🔠 FONT SIZE SETTINGS
-    document.querySelectorAll(".font-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-            let fontSize = this.dataset.font;
-            localStorage.setItem("font-size", fontSize);
-            document.body.classList.add(fontSize);
+            // Music toggle
+            const musicElement = document.getElementById("background-music");
+            document.getElementById("music-toggle").addEventListener("click", function () {
+                if (musicElement.paused) {
+                    musicElement.play();
+                } else {
+                    musicElement.pause();
+                }
+            });
+
+            // Sound Effects toggle
+            const soundElement = document.getElementById("sound-effect");
+            document.getElementById("sound-toggle").addEventListener("click", function () {
+                if (soundElement.paused) {
+                    soundElement.play();
+                } else {
+                    soundElement.pause();
+                }
+            });
+
+            // Footer visibility
+            const footerElement = document.getElementById("footer");
+            const showFooterButton = document.getElementById("show-footer");
+            const hideFooterButton = document.getElementById("hide-footer");
+
+            if (localStorage.getItem("footer") === "hide") {
+                footerElement.classList.remove("visible");
+            }
+
+            showFooterButton.addEventListener("click", function () {
+                footerElement.classList.add("visible");
+                localStorage.setItem("footer", "show");
+            });
+
+            hideFooterButton.addEventListener("click", function () {
+                footerElement.classList.remove("visible");
+                localStorage.setItem("footer", "hide");
+            });
         });
-    });
-
-    // 🔔 NOTIFICATION SETTINGS
-    document.getElementById("show-notifications").addEventListener("click", function () {
-        localStorage.setItem("notifications", "enabled");
-        alert("Notifications enabled!");
-    });
-
-    document.getElementById("disable-notifications").addEventListener("click", function () {
-        localStorage.setItem("notifications", "disabled");
-        alert("Notifications disabled!");
-    });
-
-    // 🌍 LANGUAGE SELECTION
-    document.querySelectorAll(".lang-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-            let lang = this.dataset.lang;
-            localStorage.setItem("selectedLanguage", lang);
-            document.documentElement.lang = lang;
-            location.reload(); // Apply changes across pages
-        });
-    });
-
-    // 🎵 BACKGROUND MUSIC TOGGLE
-    let music = document.getElementById("background-music") || document.createElement("audio");
-    if (!document.getElementById("background-music")) {
-        music.id = "background-music";
-        music.src = "path/to/your/music.mp3"; // Replace with actual file
-        music.loop = true;
-        document.body.appendChild(music);
-    }
-
-    let musicToggleBtn = document.getElementById("music-toggle");
-    if (localStorage.getItem("musicEnabled") === "true") {
-        music.play();
-        musicToggleBtn.textContent = "Turn Off Music";
-    }
-
-    musicToggleBtn.addEventListener("click", function () {
-        if (music.paused) {
-            music.play();
-            localStorage.setItem("musicEnabled", "true");
-            this.textContent = "Turn Off Music";
-        } else {
-            music.pause();
-            localStorage.setItem("musicEnabled", "false");
-            this.textContent = "Turn On Music";
-        }
-    });
-
-    // 🔊 SOUND EFFECTS TOGGLE
-    let soundToggleBtn = document.getElementById("sound-toggle");
-    soundToggleBtn.addEventListener("click", function () {
-        let soundEnabled = localStorage.getItem("soundEnabled") === "true";
-        localStorage.setItem("soundEnabled", !soundEnabled);
-        this.textContent = soundEnabled ? "Turn On Sound Effects" : "Turn Off Sound Effects";
-    });
-
-    // 📢 PLAY SOUND EFFECT FUNCTION
-    function playSoundEffect() {
-        if (localStorage.getItem("soundEnabled") === "true") {
-            let sound = new Audio("Juice WrLD - Cuffed (Official Audio).mp3"); // Replace with actual file
-            sound.play();
-        }
-    }
-
-    // Add sound effect to all buttons
-    document.querySelectorAll(".setting-button").forEach((btn) => {
-        btn.addEventListener("click", playSoundEffect);
-    });
-});
-
     </script>
 </body>
 </html>
