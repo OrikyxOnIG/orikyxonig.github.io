@@ -3,14 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setting Up PS3SDK or PSL1GHT</title>
+    <title>Setup Guide - Orikyx DevSec Hub</title>
     <style>
-        body { background: black; color: white; text-align: center; }
+        @keyframes rgbGlow {
+            0% { color: red; }
+            33% { color: blue; }
+            66% { color: green; }
+            100% { color: red; }
+        }
+
+        @keyframes backgroundRGB {
+            0% { background: #ff0000; }
+            33% { background: #0000ff; }
+            66% { background: #00ff00; }
+            100% { background: #ff0000; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            animation: backgroundRGB 6s infinite;
+            color: white;
+        }
+
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        #sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: rgbGlow 3s infinite;
+        }
+
+        #sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #sidebar ul li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        #sidebar ul li a:hover {
+            background: #444;
+        }
+
+        #content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: black;
+            color: lime;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            #sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            #content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+
+            #sidebar ul {
+                display: flex;
+                justify-content: space-around;
+                padding: 0;
+            }
+
+            #sidebar ul li {
+                flex: 1;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Setting Up PS3SDK or PSL1GHT</h1>
-    <p>Here, you'll learn how to set up PS3SDK or PSL1GHT for development.</p>
-    <a href="index.html" style="color: cyan;">Back to Home</a>
+    <div id="sidebar">
+        <h2>Orikyx DevSec Hub</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="downloads.html">Downloads</a></li>
+            <li><a href="ps3programming.html">PS3 Programming</a></li>
+            <li><a href="cybersecurity.html">Cybersecurity</a></li>
+            <li><a href="learningcode.html">Learning Code</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h1>Setup Guide for PS3SDK & PSL1GHT</h1>
+        <p>Follow this guide to set up both the official PS3 SDK and PSL1GHT.</p>
+
+        <div class="section">
+            <h2>Installing the Official PS3 SDK (Windows Only)</h2>
+            <p><strong>Requirements:</strong></p>
+            <ul>
+                <li>Windows 7/8/10</li>
+                <li><strong>Visual Studio 2013 Professional</strong> or <strong>Visual Studio 2010 Ultimate</strong></li>
+            </ul>
+
+            <p>1. Download the PS3 SDK installer from a trusted source.</p>
+            <p>2. Run the installer and follow the on-screen instructions.</p>
+            <p>3. During installation, ensure you select the correct Visual Studio version.</p>
+            <p>4. Once installed, configure your project inside <strong>Visual Studio 2013 Professional</strong> or <strong>Visual Studio 2010 Ultimate</strong>.</p>
+        </div>
+
+        <div class="section">
+            <h2>Installing PSL1GHT & PS3Toolchain (Linux, Windows via WSL, Chromebook, Mac)</h2>
+            <p><strong>Requirements:</strong></p>
+            <ul>
+                <li>A Linux terminal (Windows users can use WSL)</li>
+                <li>VS Code (Recommended)</li>
+            </ul>
+
+            <h3>Step 1: Install Dependencies</h3>
+            <p>For <strong>Debian 11 & Older</strong>:</p>
+            <div class="code-block">
+                sudo apt-get install autoconf automake bison flex gcc libelf-dev make \
+                texinfo libncurses5-dev patch python subversion wget zlib1g-dev \
+                libtool libtool-bin python-dev bzip2 libgmp3-dev pkg-config g++ libssl-dev clang
+            </div>
+
+            <p>For <strong>Debian 12</strong> (Replace Python 2 dependencies):</p>
+            <div class="code-block">
+                sudo apt-get install autoconf automake bison flex gcc libelf-dev make \
+                texinfo libncurses5-dev patch python-is-python3 subversion wget zlib1g-dev \
+                libtool libtool-bin python-dev-is-python3 bzip2 libgmp3-dev pkg-config g++ libssl-dev clang
+            </div>
+
+            <p>For <strong>Debian 13</strong> (Additional package required):</p>
+            <div class="code-block">
+                sudo apt-get install autoconf automake bison flex gcc libelf-dev make \
+                texinfo libncurses5-dev patch python-is-python3 subversion wget zlib1g-dev \
+                libtool libtool-bin python-dev-is-python3 python3-setuptools bzip2 libgmp3-dev pkg-config g++ libssl-dev clang
+            </div>
+
+            <h3>Step 2: Clone & Install PS3Toolchain</h3>
+            <div class="code-block">
+                git clone https://github.com/ps3dev/ps3toolchain.git or download manually from github
+                cd ps3toolchain
+                sudo chmod -R 777 ps3toolchain-master(folder)
+                ./toolchain.sh
+            </div>
+
+            <h3>Step 3: Clone & Install PSL1GHT</h3>
+            <div class="code-block">
+                git clone https://github.com/ps3dev/PSL1GHT.git or download manually from github
+                cd PSL1GHT
+                sudo chmod -R 777 PSL1GHT-master(folder)
+                ./setup.sh
+            </div>
+
+            <h3>Step 4: Set Permissions</h3>
+            <div class="code-block">
+                sudo chmod -R 777 /usr/local/ps3dev
+                or what i put in their specific sections
+            </div>
+
+            <h3>Step 5: Add Environment Variables</h3>
+            <div class="code-block">
+                echo 'export PS3DEV=/usr/local/ps3dev' >> ~/.bashrc
+                echo 'export PSL1GHT=$PS3DEV' >> ~/.bashrc
+                echo 'export PATH=$PATH:$PS3DEV/bin' >> ~/.bashrc
+                echo 'export PATH=$PATH:$PS3DEV/ppu/bin' >> ~/.bashrc
+                echo 'export PATH=$PATH:$PS3DEV/spu/bin' >> ~/.bashrc
+                source ~/.bashrc
+            </div>
+        </div>
+    </div>
 </body>
 </html>
