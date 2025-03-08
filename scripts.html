@@ -12,16 +12,26 @@
             box-sizing: border-box;
         }
 
+        @keyframes rgbGlow {
+            0% { color: red; }
+            33% { color: blue; }
+            66% { color: green; }
+            100% { color: red; }
+        }
+
+        @keyframes backgroundRGB {
+            0% { background: #ff0000; }
+            33% { background: #0000ff; }
+            66% { background: #00ff00; }
+            100% { background: #ff0000; }
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #ff0080, #ff8c00, #8a2be2, #00bfff, #32cd32);
-            background-size: 400% 400%;
-            animation: gradient 10s ease infinite;
-            color: #fff;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            animation: backgroundRGB 6s infinite;
+            color: white;
         }
 
         h1 {
