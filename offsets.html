@@ -100,7 +100,166 @@
         <div class="code-boxes">
             <div id="section1" class="code-box">
                 <h2 class="animated-rgb">PS3 System Functions</h2>
-                <pre>G_Client + 0x23</pre>
+                <pre>Core Libraries
+                cellSysutil: System utility functions.
+
+cellFs: File system operations.
+
+cellNetCtl: Network control operations.
+
+cellPad: Controller input handling.
+
+sysPrxForUser: User-level plugin functions.
+
+sysDbg: Debugging tools and logging.
+                
+                Utility Headers
+#include &lt;<cell/pad.h>&gt;
+#include &lt;<cell/sysmodule.h>&gt;
+#include &lt;<sys/prx.h>&gt;
+#include &lt;<sys/ppu_thread.h>&gt;
+#include &lt;<sys/memory.h>&gt;
+#include &lt;<sysutil/sysutil.h></pre>&gt;
+
+    Thread and Memory Management
+
+Threads:
+sys_ppu_thread_create: Create a PPU thread.
+
+sys_ppu_thread_exit: Exit a thread.
+
+sys_ppu_thread_join: Wait for a thread to finish.
+
+
+Memory:
+sys_memory_allocate: Allocate memory.
+
+sys_memory_free: Free allocated memory.
+
+sys_mmapper_allocate_address: Allocate memory for system mapping.
+
+sys_mmapper_map_memory: Map memory to a process.
+
+
+
+File System Operations
+
+Basic File Operations:
+cellFsOpen: Open a file.
+
+cellFsRead: Read from a file.
+
+cellFsWrite: Write to a file.
+
+cellFsClose: Close a file.
+
+cellFsStat: Get file information.
+
+cellFsMkdir: Create a directory.
+
+
+File System Debugging:
+cellFsReaddir: Read directory entries.
+
+cellFsFstat: Retrieve file descriptor stats.
+
+
+Input Handling
+
+Controllers:
+cellPadInit: Initialize controller input.
+
+cellPadGetData: Retrieve button state.
+
+cellPadClearBuf: Clear input buffer.
+
+
+
+Networking
+
+Basic Network Control:
+cellNetCtlInit: Initialize network control.
+
+cellNetCtlGetInfo: Get network info (e.g., IP, status).
+
+cellNetCtlTerm: Terminate network control.
+
+
+Socket Programming:
+socket: Create a socket.
+
+bind: Bind a socket to an address/port.
+
+connect: Establish a connection.
+
+send / recv: Send and receive data.
+
+close: Close a socket.
+
+
+
+Graphics and Audio
+
+Graphics:
+cellGcmInit: Initialize graphics context.
+
+cellGcmSetSurface: Set a rendering surface.
+
+
+Audio:
+cellAudioInit: Initialize audio playback.
+
+cellAudioSetChannel: Configure an audio channel.
+
+
+
+System Utilities
+
+Dialogs:
+cellSysutilCheckCallback: Check for system events.
+
+cellSysutilRegisterCallback: Register a callback for events.
+
+cellSysutilUnregisterCallback: Unregister a callback.
+
+
+System Information:
+sys_game_get_system_sw_version: Get firmware version.
+
+sys_get_platform_info: Retrieve hardware platform info.
+
+
+
+Plugin Functions
+
+SPRX Management:
+_sys_prx_register_module: Register an SPRX module.
+
+_sys_prx_exit_module: Exit an SPRX module.
+
+_sys_prx_stop_module: Stop a module.
+
+_sys_prx_load_module: Dynamically load another SPRX.
+
+
+Dynamic Linking:
+sys_prx_get_module_list: Get a list of loaded modules.
+
+sys_prx_get_module_info: Retrieve module information.
+
+
+
+Debugging
+
+Logging:
+sys_dbg_write_process_memory: Write to process memory for debugging.
+
+sys_dbg_read_process_memory: Read from process memory.
+
+
+Custom Print (requires a logging system):
+
+printf (if supported by your runtime).
             </div>
             <div class="code-box">
                 <h2 class="animated-rgb">Black Ops 1 Offsets</h2>
