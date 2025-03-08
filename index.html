@@ -11,14 +11,14 @@
             66% { color: green; }
             100% { color: red; }
         }
-        
+
         @keyframes backgroundRGB {
             0% { background: #ff0000; }
             33% { background: #0000ff; }
             66% { background: #00ff00; }
             100% { background: #ff0000; }
         }
-        
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -26,6 +26,7 @@
             animation: backgroundRGB 6s infinite;
             color: white;
         }
+
         #sidebar {
             width: 250px;
             height: 100vh;
@@ -36,30 +37,61 @@
             padding: 20px;
             transition: all 0.3s;
         }
+
         #sidebar h2 {
             text-align: center;
             margin-bottom: 20px;
             animation: rgbGlow 3s infinite;
         }
+
         #sidebar ul {
             list-style: none;
             padding: 0;
         }
+
         #sidebar ul li {
             padding: 10px;
             text-align: center;
         }
+
         #sidebar ul li a {
             color: white;
             text-decoration: none;
             display: block;
         }
+
         #sidebar ul li a:hover {
             background: #444;
         }
+
         #content {
             margin-left: 270px;
             padding: 20px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            #sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            #content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+
+            #sidebar ul {
+                display: flex;
+                justify-content: space-around;
+                padding: 0;
+            }
+
+            #sidebar ul li {
+                flex: 1;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -75,7 +107,7 @@
     </div>
     <div id="content">
         <h1>Welcome to Orikyx DevSec Hub</h1>
-        <p>Explore your journey of learning how to code in a wide variety of coding languages, program ps3 mods and tools, and learning about Cybersecurity with Orikyx DevSec Hub</p>
+        <p>Explore your journey of learning how to code in a wide variety of coding languages, program PS3 mods and tools, and learning about Cybersecurity with Orikyx DevSec Hub.</p>
     </div>
 </body>
 </html>
