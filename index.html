@@ -3,405 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Orikyx DevSec Hub</title>
-    <meta name="description" content="Explore programming, cybersecurity, and PS3 programming at Orikyx DevSec Hub.">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @keyframes rgbGlow {
+            0% { color: red; }
+            33% { color: blue; }
+            66% { color: green; }
+            100% { color: red; }
         }
-
+        
+        @keyframes backgroundRGB {
+            0% { background: #ff0000; }
+            33% { background: #0000ff; }
+            66% { background: #00ff00; }
+            100% { background: #ff0000; }
+        }
+        
         body {
             font-family: Arial, sans-serif;
-            color: #f4f4f4;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background: linear-gradient(270deg, #ff0000, #00ff00, #0000ff);
-            background-size: 600% 600%;
-            animation: rgbAnimation 10s infinite alternate ease-in-out;
+            margin: 0;
+            padding: 0;
+            animation: backgroundRGB 6s infinite;
+            color: white;
         }
-
-        @keyframes rgbAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Header styles */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #222;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .header-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .header-buttons a {
-            text-decoration: none;
-            color: #000;
-            background: linear-gradient(270deg, #ff0000, #00ff00, #0000ff);
-            background-size: 600% 600%;
-            animation: rgbAnimation 10s infinite alternate ease-in-out;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: opacity 0.3s ease;
-        }
-
-        .header-buttons a:hover {
-            opacity: 0.8;
-        }
-
-        /* Sidebar styles */
-        .sidebar-overlay {
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #222;
             padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-            transition: left 0.3s ease;
-            z-index: 1001;
+            transition: all 0.3s;
         }
-
-        .sidebar .close-btn {
-            font-size: 1.5rem;
-            color: gold;
-            background: none;
-            border: none;
-            cursor: pointer;
-            text-align: left;
+        #sidebar h2 {
+            text-align: center;
             margin-bottom: 20px;
+            animation: rgbGlow 3s infinite;
         }
-
-        .sidebar ul {
+        #sidebar ul {
             list-style: none;
             padding: 0;
         }
-
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #f4f4f4;
-            font-size: 16px;
-            font-weight: bold;
-            display: block;
+        #sidebar ul li {
             padding: 10px;
-            background: linear-gradient(270deg, #ff0000, #00ff00, #0000ff);
-            background-size: 600% 600%;
-            animation: rgbAnimation 10s infinite alternate ease-in-out;
-            border-radius: 5px;
-            transition: opacity 0.3s ease;
-        }
-
-        .sidebar ul li a:hover {
-            opacity: 0.8;
-        }
-
-        /* Sidebar open state */
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .sidebar.active {
-            left: 0;
-        }
-
-        /* Main content styles */
-        .main-content {
-            flex: 1;
-            margin-top: 60px;
-            padding: 20px;
             text-align: center;
         }
-
-        .main-content h1 {
-            color: black;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .main-content p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Footer styles */
-        footer {
-            background-color: #1a1a1a;
+        #sidebar ul li a {
             color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            position: sticky;
-            bottom: 0;
-            width: 100%;
+            text-decoration: none;
+            display: block;
         }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .header-buttons a {
-                font-size: 12px;
-                padding: 6px 10px;
-            }
+        #sidebar ul li a:hover {
+            background: #444;
+        }
+        #content {
+            margin-left: 270px;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <button id="menu-btn" aria-label="Open menu">&#9776;</button>
-        <div class="header-buttons">
-            <a href="log-in.html">Login</a>
-            <a href="signup.html">Sign Up</a>
-            <a href="settings.html">Settings</a>
-        </div>
-    </header>
-
-    <div class="sidebar-overlay" id="sidebar-overlay"></div>
-    <div class="sidebar" id="sidebar">
-        <button class="close-btn" id="close-btn" aria-label="Close menu">&times;</button>
+    <div id="sidebar">
+        <h2>Orikyx DevSec Hub</h2>
         <ul>
-            <li><a href="learningcode.html">Learning Code</a></li>
-            <li><a href="cybersecurity.html">Cybersecurity</a></li>
-            <li><a href="ps3programming.html">PS3 Programming</a></li>
             <li><a href="downloads.html">Downloads</a></li>
+            <li><a href="ps3programming.html">PS3 Programming</a></li>
+            <li><a href="cybersecurity.html">Cybersecurity</a></li>
+            <li><a href="learningcode.html">Learning Code</a></li>
         </ul>
     </div>
-
-    <div class="main-content">
-        <h1>Orikyx DevSec Hub</h1>
-        <p>Explore programming, cybersecurity, and PS3 programming through tutorials, resources, and discussions.</p>
+    <div id="content">
+        <h1>Welcome to Orikyx DevSec Hub</h1>
+        <p>Explore your journey of learning how to code in a wide variety of coding languages, program ps3 mods and tools, and learning about Cybersecurity with Orikyx DevSec Hub</p>
     </div>
-
-    <footer>
-      <p>Created by Bryson Harvey</p>
-        <p>
-            <a href="https://facebook.com/BrysonHarvey" target="_blank">Facebook</a> |
-            <a href="https://instagram.com/freeorikyx" target="_blank">Instagram</a> |
-            <a href="mailto:b21227127@gmail.com">Email</a>
-        </p>
-    </footer>
-
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-        const sidebar = document.getElementById('sidebar');
-        const closeBtn = document.getElementById('close-btn');
-
-        menuBtn.addEventListener('click', () => {
-            sidebarOverlay.classList.add('active');
-            sidebar.classList.add('active');
-        });
-
-        closeBtn.addEventListener('click', () => {
-            sidebarOverlay.classList.remove('active');
-            sidebar.classList.remove('active');
-        });
-
-        sidebarOverlay.addEventListener('click', () => {
-            sidebarOverlay.classList.remove('active');
-            sidebar.classList.remove('active');
-        });
-
-        function applySettings() {
-        // Get settings from localStorage
-        const savedTheme = localStorage.getItem('theme') || 'default';
-        const savedFontSize = localStorage.getItem('font-size') || 'medium';
-        const savedNotifications = localStorage.getItem('notifications') || 'enabled';
-        const savedFooter = localStorage.getItem('footer') || 'show';
-
-        // Apply theme to body class
-        document.body.className = `${savedTheme} ${savedFontSize}`;
-
-        // Apply notification settings (this is a placeholder, modify as per your actual notification system)
-        if (savedNotifications === 'enabled') {
-            enableNotifications();
-        } else {
-            disableNotifications();
-        }
-
-        // Apply footer visibility setting
-        if (savedFooter === 'hide') {
-            hideFooter();
-        } else {
-            showFooter();
-        }
-    }
-
-    // Function to enable notifications (modify to suit your actual notification system)
-    function enableNotifications() {
-        // Placeholder for enabling notifications
-        console.log('Notifications enabled.');
-        // Add actual notification enabling code here
-    }
-
-    // Function to disable notifications
-    function disableNotifications() {
-        // Placeholder for disabling notifications
-        console.log('Notifications disabled.');
-        // Add actual notification disabling code here
-    }
-
-    // Function to show the footer (you can customize this to match your site's footer behavior)
-    function showFooter() {
-        const footer = document.querySelector('footer');
-        if (footer) {
-            footer.style.display = 'block';
-        }
-    }
-
-    // Function to hide the footer
-    function hideFooter() {
-        const footer = document.querySelector('footer');
-        if (footer) {
-            footer.style.display = 'none';
-        }
-    }
-
-    // Run applySettings on page load to ensure settings are applied across all pages
-    window.onload = function() {
-        applySettings();
-    };
-
-        'es': {function changeLanguage(language) {
-    const content = {
-        'en': {
-            'welcome': 'Welcome to the Website',
-            'tutorial': 'Start Learning Programming',
-            'settings': 'Settings'
-        },
-            'welcome': 'Bienvenido al sitio web',
-            'tutorial': 'Comienza a aprender programación',
-            'settings': 'Configuración'
-        },
-        'fr': {
-            'welcome': 'Bienvenue sur le site web',
-            'tutorial': 'Commencez à apprendre la programmation',
-            'settings': 'Paramètres'
-        }
-    };
-
-    // Update text content on the page based on selected language
-    document.querySelectorAll('.welcome-text').forEach(el => el.textContent = content[language]['welcome']);
-    document.querySelectorAll('.tutorial-text').forEach(el => el.textContent = content[language]['tutorial']);
-    document.querySelectorAll('.settings-text').forEach(el => el.textContent = content[language]['settings']);
-
-    // Save language to localStorage
-    localStorage.setItem('language', language);
-}
-
-// Function to enable/disable background music
-function toggleMusic() {
-    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
-    const music = new Audio('Juice WRLD - Cuffed (Official Audio).mp3');
-    music.loop = true;
-
-    if (musicEnabled) {
-        music.pause();
-        localStorage.setItem('musicEnabled', 'false');
-        document.getElementById('music-toggle').textContent = 'Turn On';
-    } else {
-        music.play();
-        localStorage.setItem('musicEnabled', 'true');
-        document.getElementById('music-toggle').textContent = 'Turn Off';
-    }
-}
-
-// Function to enable/disable sound effects
-function toggleSoundEffects() {
-    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
-
-    if (soundEnabled) {
-        disableSoundEffects();
-        localStorage.setItem('soundEnabled', 'false');
-        document.getElementById('sound-toggle').textContent = 'Turn On';
-    } else {
-        enableSoundEffects();
-        localStorage.setItem('soundEnabled', 'true');
-        document.getElementById('sound-toggle').textContent = 'Turn Off';
-    }
-}
-
-// Enable sound effects
-function enableSoundEffects() {
-    document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', function () {
-            const clickSound = new Audio('path/to/click-sound.mp3');
-            clickSound.play();
-        });
-    });
-}
-
-// Disable sound effects
-function disableSoundEffects() {
-    document.querySelectorAll('button').forEach(button => {
-        button.removeEventListener('click', function () {});
-    });
-}
-
-// On page load, check for stored settings and apply them
-window.onload = function() {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    changeLanguage(savedLanguage);
-    document.getElementById('language-select').value = savedLanguage;
-
-    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
-    const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
-
-    if (musicEnabled) {
-        document.getElementById('music-toggle').textContent = 'Turn Off';
-        // Implement background music logic here
-    } else {
-        document.getElementById('music-toggle').textContent = 'Turn On';
-    }
-
-    if (soundEnabled) {
-        enableSoundEffects();
-        document.getElementById('sound-toggle').textContent = 'Turn Off';
-    } else {
-        disableSoundEffects();
-        document.getElementById('sound-toggle').textContent = 'Turn On';
-    }
-};
-
-// Event listeners for changes
-document.getElementById('language-select').addEventListener('change', function() {
-    changeLanguage(this.value);
-});
-
-document.getElementById('music-toggle').addEventListener('click', toggleMusic);
-document.getElementById('sound-toggle').addEventListener('click', toggleSoundEffects);
-
-    </script>
 </body>
 </html>
