@@ -1,1 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Learning how to Reverse Engineer PS3 EBOOTs</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* RGB animated background */
+    @keyframes rgbAnimation {
+      0% {
+        background-color: red;
+      }
+      33% {
+        background-color: green;
+      }
+      66% {
+        background-color: blue;
+      }
+      100% {
+        background-color: red;
+      }
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: rgbAnimation 3s infinite;
+      z-index: -1;
+    }
+
+    /* Header */
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Content */
+    .content {
+      padding: 30px;
+      color: white;
+    }
+
+    .steps {
+      margin-top: 30px;
+      font-size: 1.2rem;
+    }
+
+    .steps ol {
+      list-style-type: decimal;
+    }
+
+    .step {
+      margin: 20px 0;
+    }
+
+    .code-block {
+      background-color: #222;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* Footer */
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated RGB Background -->
+  <div class="background"></div>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Learning how to Reverse Engineer PS3 EBOOTs</h1>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cybersecurity.html">Cybersecurity</a></li>
+      <li><a href="download.html">Downloads</a></li>
+      <li><a href="learningcode.html">Learning Code</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h2 id="steps">20 Steps on How to Reverse Engineer PS3 EBOOTs</h2>
+    <div class="steps">
+      <ol>
+        <li class="step">
+          <strong>Step 1: Download the EBOOT.BIN file</strong>
+          <div class="code-block">
+            <!-- Sample code snippet -->
+            # Download the EBOOT.BIN file from a PS3 game directory.
+          </div>
+          <p>The first step is to obtain the `EBOOT.BIN` file, which is the executable for the PS3 game. This file is typically located in the game’s directory on the PS3 or from PS3 ISO backups.</p>
+        </li>
+        <li class="step">
+          <strong>Step 2: Install a Hex Editor</strong>
+          <div class="code-block">
+            # Download and install a hex editor like HxD or IDA Pro.
+          </div>
+          <p>Install a hex editor like HxD or IDA Pro. These tools allow you to view and modify the raw binary data of the `EBOOT.BIN` file.</p>
+        </li>
+        <li class="step">
+          <strong>Step 3: Convert EBOOT.BIN to EBOOT.ELF</strong>
+          <div class="code-block">
+            # Download and install TrueAncestor EBOOT Resigner
+            # Use the following command to convert:
+            TrueAncestor_EBOOT_Resigner.exe -e EBOOT.BIN EBOOT.ELF
+          </div>
+          <p>Use TrueAncestor EBOOT Resigner to convert `EBOOT.BIN` into `EBOOT.ELF`. The ELF format is easier to analyze and reverse engineer.</p>
+        </li>
+        <li class="step">
+          <strong>Step 4: Open EBOOT.ELF in a Hex Editor</strong>
+          <div class="code-block">
+            # Open the converted EBOOT.ELF file in your hex editor (e.g., HxD).
+          </div>
+          <p>Now open the `EBOOT.ELF` in your hex editor. You'll be able to view and edit the raw binary structure of the file.</p>
+        </li>
+        <li class="step">
+          <strong>Step 5: Identify the Entry Point</strong>
+          <div class="code-block">
+            # Locate the entry point of the code.
+          </div>
+          <p>The entry point is where the execution of the code begins. This can often be found by searching for specific patterns or by checking the ELF header for entry point addresses.</p>
+        </li>
+        <li class="step">
+          <strong>Step 6: Search for Known Offsets</strong>
+          <div class="code-block">
+            # Use known offsets for specific functions or features.
+          </div>
+          <p>Known offsets (such as those for game functions like God Mode or health) are often useful to locate in the code. These offsets are constants that correspond to specific memory locations used by the game.</p>
+        </li>
+        <li class="step">
+          <strong>Step 7: Locate and Analyze Functions</strong>
+          <div class="code-block">
+            # Identify functions in the ELF file.
+          </div>
+          <p>Use tools like IDA Pro or Ghidra to disassemble the ELF file. By analyzing the disassembled code, you'll identify key functions that drive the game logic.</p>
+        </li>
+        <li class="step">
+          <strong>Step 8: Trace the Code Flow</strong>
+          <div class="code-block">
+            # Use GDB to trace function calls and code flow.
+          </div>
+          <p>Set up breakpoints in GDB or other debugging tools to trace the flow of the game code. This helps to understand how certain functions are triggered during execution.</p>
+        </li>
+        <li class="step">
+          <strong>Step 9: Look for Game Logic and Offsets</strong>
+          <div class="code-block">
+            # Search for game-related logic and offset values.
+          </div>
+          <p>By searching for certain values or patterns, you can find key game logic and offsets. These are crucial for modding or understanding how the game operates at a low level.</p>
+        </li>
+        <li class="step">
+          <strong>Step 10: Debug Critical Sections of the Code</strong>
+          <div class="code-block">
+            # Debug critical sections that may affect game performance.
+          </div>
+          <p>Focus on critical sections of the code that affect gameplay performance, graphics, and other core elements. Debugging these will provide insight into the internal workings of the game.</p>
+        </li>
+        <li class="step">
+          <strong>Step 11: Modify Code for Testing</strong>
+          <div class="code-block">
+            # Modify the code and reassemble it to test your changes.
+          </div>
+          <p>Once you've identified key functions and offsets, you can modify the code. Reassemble the ELF file and run tests to see if the changes behave as expected.</p>
+        </li>
+        <li class="step">
+          <strong>Step 12: Find Anti-Piracy or Anti-Debugging Measures</strong>
+          <div class="code-block">
+            # Identify and disable anti-piracy or anti-debugging features.
+          </div>
+          <p>Many games include anti-piracy or anti-debugging measures. By analyzing the code, you can identify these protections and disable them if necessary to continue reverse engineering.</p>
+        </li>
+        <li class="step">
+          <strong>Step 13: Use Debugging Tools to Find and Change Offsets</strong>
+          <div class="code-block">
+            # Use GDB or other tools to find and alter offsets at runtime.
+          </div>
+          <p>Run the game through a debugger to identify offsets dynamically during execution. You can alter these offsets in real-time to test different outcomes.</p>
+        </li>
+        <li class="step">
+          <strong>Step 14: Apply Modifications</strong>
+          <div class="code-block">
+            # Apply modifications to game logic or offsets based on research.
+          </div>
+          <p>After analyzing the code, apply modifications to enhance or change game behavior. These might include altering health values, game speed, or in-game mechanics.</p>
+        </li>
+        <li class="step">
+          <strong>Step 15: Rebuild the EBOOT.ELF</strong>
+          <div class="code-block">
+            # Rebuild the modified ELF file.
+          </div>
+          <p>Once modifications are complete, rebuild the `EBOOT.ELF` file and make sure it works properly with the game.</p>
+        </li>
+        <li class="step">
+          <strong>Step 16: Revert Changes if Necessary</strong>
+          <div class="code-block">
+            # Revert changes if you encounter issues.
+          </div>
+          <p>If issues arise, revert the changes to the original ELF or use backup files. Always test thoroughly to ensure stability.</p>
+        </li>
+        <li class="step">
+          <strong>Step 17: Test on the PS3</strong>
+          <div class="code-block">
+            # Run the modified EBOOT.ELF on a PS3.
+          </div>
+          <p>Transfer the modified `EBOOT.ELF` to a PS3 and test it. Debugging may be necessary to resolve any hardware-specific issues.</p>
+        </li>
+        <li class="step">
+          <strong>Step 18: Debug for Optimization</strong>
+          <div class="code-block">
+            # Optimize your code to improve performance.
+          </div>
+          <p>After testing, optimize the code for performance improvements, such as reducing memory usage or improving execution speed.</p>
+        </li>
+        <li class="step">
+          <strong>Step 19: Document Your Process</strong>
+          <div class="code-block">
+            # Document all the steps and findings for reference.
+          </div>
+          <p>Document the entire reverse engineering process, including steps, offsets, and modifications. This will be helpful for future reference or sharing with the community.</p>
+        </li>
+        <li class="step">
+          <strong>Step 20: Share and Contribute to the Community</strong>
+          <div class="code-block">
+            # Share your knowledge and findings with others.
+          </div>
+          <p>Contribute to reverse engineering communities, tutorials, or forums. Sharing your findings helps others learn and advance the craft of reverse engineering.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>Orikyx | &copy; 2025 Orikyx DevSec Hub</p>
+  </footer>
+
+</body>
+</html>
 
