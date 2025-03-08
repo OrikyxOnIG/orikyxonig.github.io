@@ -5142,7 +5142,829 @@ SP_Script_model = 0x4E85CC;
             </div>
             <div class="code-box">
                 <h2 class="animated-rgb">COD Ghost</h2>
-                <pre>G_Client + 0x27</pre>
+                <pre>Addresses:
+    
+
+G_Client - 0xF44980
+
+
+
+G_Client_Size - 0x3700
+
+
+
+
+Skate Mod:
+    
+
+SkateMod - G_Client + 0x0E
+
+On - 0x01
+
+Off - 0x00
+
+
+
+
+Red Boxes:
+    
+
+RedBoxes - G_Client + 0x13
+
+On - 0x55
+
+Off - 0x40
+
+
+
+
+Teleport:
+    
+
+Teleport - G_Client + 0x1B
+
+Sky - Adding Soon...
+
+Space - Adding Soon...
+
+Under Map - Adding Soon...
+
+
+
+
+JetPack:
+    
+
+Jetpack - G_Client + 0x30
+
+
+
+
+Akimbo Primary Weapon:
+    
+
+Akimbo Primary Weapons - G_Client + 0x341
+
+On - 0x01
+
+Off - 0x00
+
+
+
+
+Green Boxed Screen + Others:
+    
+
+Green Boxed Screen - G_Client + 0x423
+
+On - 0xFF
+
+Off - 0x00
+
+___Other Shit For Offset___
+
+Reload Weapon - 0x01
+
+Remove Weapon - 0x02 
+
+
+
+
+Ammo Offsets:
+    
+
+On - 0xFF, 0xFF
+
+Off - 0x00, 0x64
+
+Primary Ammo - G_Client + 0x55A
+
+Secondary Ammo - G_Client + 0x56A
+
+Lethal Ammo - G_Client + 0x53A
+
+Tacical Ammo - G_Client + 0x54A
+
+
+
+
+Give Player Lag:
+    
+
+Give Lag - G_Client + 0x2F9F
+
+On - 0x00
+
+Off - 0x02
+
+
+
+
+InGame Editors:
+    
+
+Name InGame - G_Client + 0x309C
+
+Score InGame - G_Client + 0x3150
+
+Kills InGame - G_Client + 0x3153
+
+Deaths InGame - G_Client + 0x3155 
+
+Asists InGame - G_Client + 0x3157
+
+
+
+
+x2 Speed
+    
+
+x2 Speed - G_Client + 0x3050
+
+On - 0x40
+
+Off - Adding Soon...
+
+
+
+
+Change Team:
+    
+
+Change Team - G_Client + 0x3063
+
+Spectator - 0x00
+
+Ghosts - 0x01
+
+Federation - 0x02
+
+
+
+
+UAV:
+    
+
+Uav - G_Client + 0x3165
+
+On - 0x01
+
+Off - 0x00
+
+
+
+
+mFlags:
+    
+
+mFlag - G_Client + 0x331F
+
+NoClip - 0x01
+
+UFO - 0x02
+
+Freeze - 0x07
+
+Default - 0x00
+                
+Address:
+    
+
+G_Entity - 0xE04980
+
+
+
+G_Entity_Size - 0x280
+
+
+
+
+Origin:
+    
+
+Origin - G_Entity + 0x138
+
+
+
+
+Angles:
+    
+
+Angles - G_Entity + 0x144
+
+
+
+
+SetModel:
+    
+
+SetModel - G_Entity + 0x171
+
+
+
+
+GodMode:
+    
+
+GodMode - G_Entity +  0x1A8
+
+Player_Die - 0x2414D8
+
+G_DamageClient - 0x241E80
+
+GetEye - 0x231884
+
+SetClientViewAngles - 0x231450
+
+R_RegisterDvars - 0x457070
+
+scrVmPub_t - 0x13C3140
+
+G_FindConfigstringIndex - 0x321D0
+
+G_MaterialIndex - 0x32334
+
+G_CallSpawnEntity - 0x28AB00
+
+G_GetWeaponIndexForName - 0x294D34
+
+Add:
+    
+
+Scr_AddBool - 0x2E89EC
+
+Scr_AddInt - 0x2E8AE8
+
+Scr_AddFloat - 0x2E8BE4
+
+Scr_AddUndefined - 0x2E8DE4
+
+Scr_AddObject - 0x2E8ED0
+
+Scr_AddEntityNum - 0x2E8FD4
+
+Scr_AddStruct - 0x2E90DC
+
+Scr_AddString - 0x2E91EC
+
+Scr_AddConstString - 0x2E93FC
+
+Scr_AddVector - 0x2E952C
+
+Scr_AddArray - 0x2E9840
+
+Scr_AddArrayStringIndexed - 0x2E98C0
+
+Scr_AddEntity - 0x28B1CC
+
+Scr_AddHudElem - 0x28B6B4
+
+
+
+
+Get:
+    
+
+Scr_GetInt - 0x2E7328
+
+Scr_GetFloat - 0x2E75F0
+
+Scr_GetConstString - 0x2E773C
+
+Scr_GetConstLowercaseString - 0x2E786C
+
+Scr_GetString - 0x2E7A74
+
+Scr_GetIString - 0x2E7E24
+
+Scr_GetVector - 0x2E7F4C
+
+Scr_GetEntityRef - 0x2E8084
+
+Scr_GetObject - 0x2E824C
+
+Scr_GetObjectArray - 0x2E8414
+
+Scr_GetObjectOrigin - 0x2E8530
+
+Scr_GetPointerType - 0x2E88B8
+
+Scr_GetNumParam - 0x2E89DC
+
+Scr_GetGenericField - 0x28B1F8
+
+Scr_GetEntityField - 0x28B3EC
+
+Scr_GetObjectField - 0x28B508
+
+Scr_GetEntity - 0x28B5C8
+
+
+
+
+Others:
+    
+
+Scr_SetGenericField - 0x28AD80
+
+Scr_SetObjectField - 0x28B018
+
+Scr_FreeHudElemConstStrings - 0x245A14
+
+Scr_FreeEntityNum - 0x2DFB04
+
+Scr_FreeHudElem - 0x28B628
+
+Scr_ExecEntThread - 0x28B704
+
+Scr_ExecEntThreadNum - 0x2E67F8
+
+Scr_Notify - 0x28B73C
+
+Scr_NotifyNum - 0x2E2374
+
+Scr_MakeArray - 0x2E974C
+
+GetNewArrayVariable - 0x2DC06C
+
+GetArraySize - 0x2DCF84
+
+GetNewVariableIndexInternal - 0x2DB034
+
+Scr_SetObjectField - 0x28B018
+
+SetEntityFieldValue - 0x2E9AA8
+
+Scr_GetObjectField - 0x28B508
+
+GetEntityFieldValue - 0x2E9B3C
+
+HECmd:
+    
+
+HECmd_SetText - 0x247070
+
+HECmd_SetMaterial - 0x247164
+
+HECmd_SetTargetEnt - 0x2472B0
+
+HECmd_LinkWaypointToTargetWithOffset - 0x247330
+
+HECmd_ClearTargetEnt - 0x247418
+
+HECmd_SetTimer - 0x247788
+
+HECmd_SetTimerUp - 0x2477C8
+
+HECmd_SetTimerStatic - 0x247808
+
+HECmd_SetTenthsTimer - 0x247848
+
+HECmd_SetTenthsTimerUp - 0x247888
+
+HECmd_SetTenthsTimerStatic - 0x2478C8
+
+HECmd_SetClock - 0x247908
+
+HECmd_SetClockUp - 0x247948
+
+HECmd_SetValue - 0x247988
+
+HECmd_SetWaypoint - 0x247A3C
+
+HECmd_SetWaypointEdgeStyle_RotatingIcon - 0x247B98
+
+HECmd_SetWaypointEdgeStyle_SecondaryArrow - 0x247C18
+
+HECmd_SetWaypointIconOffscreenOnly - 0x247C9C
+
+HECmd_FadeOverTime - 0x247D30
+
+HECmd_ChangeFontScaleOverTime - 0x247E48
+
+HECmd_ScaleOverTime - 0x247F60
+
+HECmd_MoveOverTime - 0x2480A8
+
+HECmd_Reset - 0x2481AC
+
+HECmd_Destroy - 0x24820C
+
+HECmd_SetPlayerNameString - 0x248280
+
+HECmd_SetPulseFX - 0x248368
+
+
+
+
+Other:
+    
+
+HudElemWaypointHeight - 0x465E58
+
+DrawSingleHudElem2d - 0x15C8F8
+
+CG_Draw2dHudElems - 0x15D02C
+
+HudElemWaypointHeight - 0x465E58
+
+CG_ServerMaterialName - 0x161AC4
+
+BG_LerpHudColors - 0xF543C
+
+
+VM_CancelNotify - 0x2E1880
+
+VM_Notify - 0x2E1970
+
+VM_Execute_0 - 0x2E2EA0
+
+VM_Execute - 0x2E6444
+
+VM_Resume - 0x2E69C4
+
+PlayerCMD_GetNodeNumber - 0x232ED4
+
+PlayerCMD_NodeIsDisconnected - 0x232F0C
+
+PlayerCMD_GetNormalizedCameraMovement - 0x232F48
+
+PlayerCMD_GetHybridScopeState - 0x2330A4
+
+PlayerCMD_SetHybridScopeState - 0x23327C
+
+PlayerCMD_GiveWeapon - 0x233468
+
+PlayerCMD_TakeWeapon - 0x233830
+
+PlayerCMD_TakeAllWeapons - 0x233974
+
+PlayerCMD_GetCurrentWeapon - 0x233A54
+
+PlayerCMD_GetCurrentPrimaryWeapon - 0x233B78
+
+PlayerCMD_GetCurrentWeaponClipAmmo - 0x233C84
+
+PlayerCMD_GetCurrentOffhand - 0x233DFC
+
+PlayerCMD_SetOffhandPrimaryClass - 0x233EFC
+
+PlayerCMD_GetOffhandPrimaryClass - 0x233FD8
+
+PlayerCMD_SetOffhandSecondaryClass - 0x234078
+
+PlayerCMD_GetOffhandSecondaryClass - 0x234154
+
+PlayerCMD_HasWeapon - 0x2341F4
+
+PlayerCMD_SwitchToWeapon - 0x2345E4
+
+PlayerCMD_SwitchToWeaponImmediate - 0x234668
+
+PlayerCMD_SwitchToOffhand - 0x2346EC
+
+PlayerCMD_SetWeaponModelVariant - 0x2348D0
+
+PlayerCMD_GiveStartAmmo - 0x234A7C
+
+PlayerCMD_GiveMaxAmmo - 0x234C1C
+
+PlayerCMD_GetFractionStartAmmo - 0x234E88
+
+PlayerCMD_GetFractionMaxAmmo - 0x235120
+
+PlayerCMD_IsDualWielding - 0x235540
+
+PlayerCMD_IsReloading - 0x2355E4
+
+PlayerCMD_IsSwitchingWeapon - 0x2356CC
+
+PlayerCMD_IsOffhandWeaponReadyToThrow - 0x2357B4
+
+PlayerCMD_SetOrigin - 0x23585C
+
+PlayerCMD_SetVelocity - 0x235958
+
+PlayerCMD_GetVelocity - 0x235A08
+
+PlayerCMD_SetAngles - 0x235AB8
+
+PlayerCMD_GetAngles - 0x235B7C
+
+PlayerCMD_GetViewHeight - 0x235C08
+
+PlayerCMD_EnableMouseSteer - 0x235C90
+
+PlayerCMD_GetNormalizedMovement - 0x235CB8
+
+PlayerCMD_IsSprinting - 0x235DB8
+
+PlayerCMD_IsLeaning - 0x235E60
+
+PlayerCMD_UseButtonPressed - 0x235F0C
+
+PlayerCMD_AttackButtonPressed - 0x235FCC
+
+PlayerCMD_AdsButtonPressed - 0x236088
+
+PlayerCMD_MeleeButtonPressed - 0x236124
+
+PlayerCMD_FragButtonPressed - 0x2361E0
+
+PlayerCMD_SecondaryOffhandButtonPressed - 0x23627C
+
+PlayerCMD_JumpButtonPressed - 0x236318
+
+PlayerCMD_UsingGamepad - 0x2363B4
+
+PlayerCMD_IsThrowingGrenade - 0x23641C
+
+PlayerCMD_PlayerADS - 0x2364AC
+
+PlayerCMD_IsOnGround - 0x236534
+
+PlayerCMD_IsUsingTurret - 0x2365F0
+
+PlayerCMD_SetViewModel - 0x236690
+
+PlayerCMD_SetSpreadOverRide - 0x236764
+
+PlayerCMD_ResetSpreadOverRide - 0x23681C
+
+PlayerCMD_SetAimSpreadMovementScale - 0x2368B8
+
+PlayerCMD_GetViewModel - 0x236980
+
+PlayerCMD_GiveAchievement - 0x236A00
+
+PlayerCMD_OpenPopUpMenu - 0x236ABC
+
+PlayerCMD_OpenPopUpMenuNoMouse - 0x236BB8
+
+PlayerCMD_ClosePopUpMenu - 0x236CB4
+
+PlayerCMD_OpenMenu - 0x236D60
+
+PlayerCMD_CloseMenu - 0x236E5C
+
+PlayerCMD_ShowHudSplash - 0x236F58
+
+PlayerCMD_FreezeControls - 0x237070
+
+PlayerCMD_DisableUsability - 0x237160
+
+PlayerCMD_EnableUsability - 0x237210
+
+PlayerCMD_DisableWeapons - 0x2372CO
+
+PlayerCMD_EnableWeapons - 0x23734C
+
+PlayerCMD_DisableOffhandWeapons - 0x2373DC
+
+PlayerCMD_EnableOffHandWeapons - 0x237458
+
+PlayerCMD_DisableWeaponSwitch - 0x2374D8
+
+PlayerCMD_EnableWeaponSwitch - 0x237554
+
+PlayerCMD_SetWeaponAmmoClip - 0x2375D4
+
+PlayerCMD_SetWeaponAmmoStock - 0x237920
+
+PlayerCMD_GetWeaponAmmoClip - 0x237C4C
+
+PlayerCMD_GetWeaponAmmoStock - 0x237E2C
+
+PlayerCMD_AnyAmmoForWeaponModes - 0x238058
+
+PlayerCMD_SetClientOmnvar - 0x238210
+
+PlayerCMD_SetClientDvar - 0x238424
+
+PlayerCMD_SetClientSpawnSightTraces - 0x238628
+
+PlayerCMD_ClientSpawnSightTracePassed - 0x238750
+
+PlayerCMD_SetClientDvars - 0x238960
+
+PlayerCMD_SetWhizbySpreads - 0x238BB8
+
+PlayerCMD_SetWhizbyRadii - 0x238CD8
+
+PlayerCMD_SetVolMod - 0x238DC8
+
+PlayerCMD_SetChannelVolume - 0x238F18
+
+PlayerCMD_SetChannelVolumes - 0x239078
+
+PlayerCMD_DeactivateChannelVolumes - 0x2391E0
+
+PlayerCMD_PlayLocalSound - 0x23931C
+
+PlayerCMD_StopLocalSound - 0x239420
+
+PlayerCMD_BeginLocationSelection - 0x239530
+
+PlayerCMD_EndLocationSelection - 0x2396B0
+
+PlayerCMD_AllowADS - 0x2339728
+
+PlayerCMD_AllowJump - 0x2397F8
+
+PlayerCMD_AllowSprint - 0x2398A8
+
+PlayerCMD_SetActionSlot - 0x239958
+
+PlayerCMD_GetWeaponsListAll - 0x239D78
+
+PlayerCMD_GetWeaponsListPrimaries - 0x239DB0
+
+PlayerCMD_GetWeaponsListOffHands - 0x239DE8
+
+PlayerCMD_GetWeaponsListItems - 0x239E20
+
+PlayerCMD_GetWeaponsListExclusives - 0x239E58
+
+PlayerCMD_GetWeaponsList - 0x239E90
+
+PlayerCMD_VisionSyncWithPlayer - 0x23A084
+
+PlayerCMD_DisableWeaponPickup - 0x23A1A4
+
+PlayerCMD_EnableWeaponPickup - 0x23A238
+
+PlayerCMD_DisableAutoReload - 0x23A2C8
+
+PlayerCMD_EnableAutoReload - 0x23A354
+
+PlayerCMD_IsMeleeing - 0x23A3E4
+
+PlayerCMD_VisionSetStage - 0x23A490
+
+PlayerCMD_VisionSetNakedForPlayer - 0x23A6E8
+
+PlayerCMD_VisionSetNightForPlayer - 0x23A720
+
+PlayerCMD_VisionSetMissileCamForPlayer - 0x23A758
+
+PlayerCMD_VisionSetThermalForPlayer - 0x23A790
+
+PlayerCMD_VisionSetPainForPlayer - 0x23A7C8
+
+PlayerCMD_VisionSetPostApplyForPlayer - 0x23A800
+
+PlayerCMD_SetBlurForPlayer - 0x23A840
+
+PlayerCMD_GetPlayerWeaponModel - 0x23A9FC
+
+PlayerCMD_GetPlayerKnifeModel - 0x23AA24
+
+PlayerCMD_CanPlayerPlaceSentry - 0x23AA50
+
+PlayerCMD_CanPlayerPlaceTank - 0x23ABC8
+
+PlayerCMD_SetPerk - 0x23AD40
+
+PlayerCMD_HasPerk - 0x23AF20
+
+PlayerCMD_UnsetPerk - 0x23B0A0
+
+PlayerCMD_ClearPerks - 0x23B270
+
+PlayerCMD_NotifyOnPlayerCommand - 0x23B380
+
+PlayerCMD_CanMantle - 0x23B41C
+
+PlayerCMD_ForceMantle - 0x23B4D8
+
+PlayerCMD_CancelMantle - 0x23B55C
+
+PlayerCMD_IsMantling - 0x23B5E0
+
+PlayerCMD_PlayFX - 0x23B678
+
+PlayerCMD_PlayerRecoilScaleOn - 0x23B7BC
+
+PlayerCMD_PlayerRecoilScaleOff - 0x23B878
+
+PlayerCMD_WeaponLockStart - 0x23B908
+
+PlayerCMD_WeaponLockFinalize - 0x23BA38
+
+PlayerCMD_WeaponLockFree - 0x23BC18
+
+PlayerCMD_WeaponLockTargetTooClose - 0x23BCBC
+
+PlayerCMD_WeaponLockNoClearance - 0x23BD6C
+
+PlayerCMD_SetViewKickScale - 0x23BE20
+
+PlayerCMD_GetViewKickScale - 0x23BED8
+
+PlayerCMD_SetNamePlateMaterial - 0x23BF60
+
+PlayerCMD_ButtonPressedDEV - 0x23C0FC
+
+PlayerCMD_PingPlayer - 0x23C120
+
+PlayerCMD_SetSpawnWeapon - 0x23C5A8
+
+PlayerCMD_DropItem - 0x23C924
+
+PlayerCMD_DropScavengerBag - 0x23CAE4
+
+PlayerCMD_FinishPlayerDamage - 0x23CBC8
+
+PlayerCMD_Suicide - 0x23D3F8
+
+PlayerCMD_CloseInGameMenu - 0x23D520
+
+PlayerCMD_iPrintln - 0x23D5CC
+
+PlayerCMD_iPrintlnbold - 0x23D674
+
+PlayerCMD_Spawn - 0x23D71C
+
+PlayerCMD_SetEnterTime - 0x23D7C8
+
+PlayerCMD_ClonePlayer - 0x23D850
+
+PlayerCMD_IsTalking - 0x23DBFC
+
+PlayerCMD_AllowSpectateTeam - 0x23DCB8
+
+PlayerCMD_IsMLGSpectator - 0x23DDC4
+
+PlayerCMD_SetMLGSpectator - 0x23DE40
+
+PlayerCMD_GetMLGSpectatorTeam - 0x23DEBC
+
+PlayerCMD_GetGuid - 0x23DF5C
+
+PlayerCMD_GetXuid - 0x23DFF4
+
+PlayerCMD_GetJoinType - 0x23E0 E0
+
+PlayerCMD_GetUcdIHigh - 0x23E1A8
+
+PlayerCMD_GetUcdIdLow - 0x23E1CC
+
+PlayerCMD_GetClanIdHigh - 0x23E1F0
+
+PlayerCMD_GetClanIdLow - 0x23E26C
+
+PlayerCMD_IsHost - 0x23E2E8
+
+PlayerCMD_GetSpectatingPlayer - 0x23E398
+
+PlayerCMD_PredictStreamPos - 0x23E444
+
+PlayerCMD_SetRank - 0x23E558
+
+PlayerCMD_SetCardDisplaySlot - 0x23E62C
+
+PlayerCMD_RegWeaponForFXRemoval - 0x23E73C
+
+PlayerCMD_LastStandRevive - 0x23E7E8
+
+PlayerCMD_SetSpectateDefaults - 0x23E864
+
+PlayerCMD_SetMLGCameraDefaults - 0x23E8F8
+
+PlayerCMD_GetThirdPersonCrosshairOffset - 0x23E9C0
+
+PlayerCMD_IsSplitScreenPlayer - 0x23EA54
+
+PlayerCMD_IsSplitScreenPlayerPrimary - 0x23EB38
+
+PlayerCMD_MarkForEyesOn - 0x23EC28
+
+PlayerCMD_IsSighted - 0x23ECE4
+
+PlayerCMD_GetPlayersSightingMe - 0x23EDEC
+
+PlayerCMD_GetSightedPlayers - 0x23EF28
+
+PlayerCMD_GetNearestNode - 0x23F0D0
+
+PlayerCMD_RegisterParty - 0x23F174
+
+PlayerCMD_GetFireteamMembers - 0x23F380
+
+PlayerCMD_GetCustomizationBody - 0x23F56C
+
+PlayerCMD_GetCustomizationHead - 0x23F5FC
+
+PlayerCMD_GetCustomizationViewModel - 0x23F68C
+
+PlayerCMD_LoadCustomizationPlayerView - 0x23F71C
+
+PlayerCMD_HasLoadedCustomizationPlayerView - 0x23F7BC
+
+PlayerCMD_HasFemaleCustomizationModel - 0x23F85C
+
+
+                </pre>
             </div>
             <div id="section2" class="code-box">
                 <h2 class="animated-rgb">AW Offsets</h2>
