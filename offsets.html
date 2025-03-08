@@ -1,1 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PS3 Offsets and System Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav {
+            background-color: #222;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #0ff;
+        }
+
+        .content {
+            padding-top: 80px;
+            text-align: center;
+        }
+
+        .code-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .code-box {
+            width: 45%;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-height: 300px;
+            overflow: auto;
+            color: #c6c6c6;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .code-box pre {
+            margin: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .animated-rgb {
+            animation: rgbAnim 3s infinite;
+        }
+
+        @keyframes rgbAnim {
+            0% {color: red;}
+            33% {color: green;}
+            66% {color: blue;}
+            100% {color: red;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ps3programming.html">PS3 Programming</a>
+        <a href="download.html">Downloads</a>
+    </nav>
+
+    <div class="content">
+        <h1 class="animated-rgb">PS3 Offsets and System Functions</h1>
+
+        <div class="code-boxes">
+            <div id="section1" class="code-box">
+                <h2 class="animated-rgb">PS3 System Functions</h2>
+                <pre>G_Client + 0x23</pre>
+            </div>
+            <div class="code-box">
+                <h2 class="animated-rgb">Black Ops 1 Offsets</h2>
+                <pre>G_Client + 0x24</pre>
+            </div>
+            <div class="code-box">
+                <h2 class="animated-rgb">Black Ops 2 Offsets</h2>
+                <pre>G_Client + 0x25</pre>
+            </div>
+            <div class="code-box">
+                <h2 class="animated-rgb">Black Ops 3 Offsets</h2>
+                <pre>G_Client + 0x26</pre>
+            </div>
+            <div class="code-box">
+                <h2 class="animated-rgb">COD Ghost</h2>
+                <pre>G_Client + 0x27</pre>
+            </div>
+            <div id="section2" class="code-box">
+                <h2 class="animated-rgb">AW Offsets</h2>
+                <pre>Syscall_Handler</pre>
+            </div>
+            <div class="code-box">
+                <h2 class="animated-rgb">MW2 Offsets</h2>
+                <pre>Syscall_Init</pre>
+            </div>
+            <div class="code-box">
+                <h2 class="animated-rgb">MW3 Offsets</h2>
+                <pre>Syscall_Exec</pre>
+            </div>
+            <div class="code-box">
+                <h2 class="animated-rgb">W@W Offsets</h2>
+                <pre>Syscall_Reset</pre>
+            </div>
+            <div class="code-box">
+                <h2 class="animated-rgb">COD 4 Offsets</h2>
+                <pre>Syscall_Dump</pre>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
 
