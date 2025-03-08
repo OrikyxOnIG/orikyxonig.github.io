@@ -1,1 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS3 Scripts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #8a2be2, #00bfff, #32cd32);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            margin-top: 60px;
+        }
+
+        .scripts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .script h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #f1f1f1;
+        }
+
+        .code-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        pre {
+            font-family: "Courier New", monospace;
+            color: #e1e1e1;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Scripts</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Section -->
+    <main>
+        <h1>PS3 Scripts Collection</h1>
+      <!-- Script 1: God Mode -->
+<div class="script">
+    <h2>Script 1: God Mode</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void godMode() {
+    u32 *health = (u32*) 0x10000000; // Replace with proper health offset
+    *health = 9999; // Set health to max
+}
+
+void main() {
+    godMode();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 2: Infinite Ammo -->
+<div class="script">
+    <h2>Script 2: Infinite Ammo</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void infiniteAmmo() {
+    u32 *ammo = (u32*) 0x20000000; // Replace with proper ammo offset
+    *ammo = 9999; // Set ammo to max
+}
+
+void main() {
+    infiniteAmmo();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 3: Unlock All Skins -->
+<div class="script">
+    <h2>Script 3: Unlock All Skins</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllSkins() {
+    u32 *skinUnlock = (u32*) 0x30000000; // Replace with proper skin unlock offset
+    *skinUnlock = 1; // Unlock all skins
+}
+
+void main() {
+    unlockAllSkins();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 4: No Recoil -->
+<div class="script">
+    <h2>Script 4: No Recoil</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void noRecoil() {
+    u32 *recoil = (u32*) 0x40000000; // Replace with proper recoil offset
+    *recoil = 0; // Disable recoil
+}
+
+void main() {
+    noRecoil();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 5: Super Speed -->
+<div class="script">
+    <h2>Script 5: Super Speed</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void superSpeed() {
+    u32 *speed = (u32*) 0x50000000; // Replace with proper speed offset
+    *speed = 10; // Set player speed to super fast
+}
+
+void main() {
+    superSpeed();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 6: Infinite Health -->
+<div class="script">
+    <h2>Script 6: Infinite Health</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void infiniteHealth() {
+    u32 *health = (u32*) 0x10000000; // Replace with proper health offset
+    *health = 9999; // Set health to max
+}
+
+void main() {
+    infiniteHealth();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 7: Disable Gravity -->
+<div class="script">
+    <h2>Script 7: Disable Gravity</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void disableGravity() {
+    u32 *gravity = (u32*) 0x60000000; // Replace with proper gravity offset
+    *gravity = 0; // Disable gravity
+}
+
+void main() {
+    disableGravity();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 8: No Fall Damage -->
+<div class="script">
+    <h2>Script 8: No Fall Damage</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void noFallDamage() {
+    u32 *fallDamage = (u32*) 0x70000000; // Replace with proper fall damage offset
+    *fallDamage = 0; // Disable fall damage
+}
+
+void main() {
+    noFallDamage();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 9: Unlock All Achievements -->
+<div class="script">
+    <h2>Script 9: Unlock All Achievements</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllAchievements() {
+    u32 *achievements = (u32*) 0x80000000; // Replace with proper achievement offset
+    *achievements = 1; // Unlock all achievements
+}
+
+void main() {
+    unlockAllAchievements();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 10: Teleport -->
+<div class="script">
+    <h2>Script 10: Teleport</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void teleport(u32 x, u32 y, u32 z) {
+    u32 *playerPosition = (u32*) 0x90000000; // Replace with proper position offset
+    playerPosition[0] = x; // Set X position
+    playerPosition[1] = y; // Set Y position
+    playerPosition[2] = z; // Set Z position
+}
+
+void main() {
+    teleport(100, 200, 300); // Teleport to coordinates (100, 200, 300)
+}
+        </code></pre>
+    </div>
+</div>
+
+  <!-- Script 11: Slow Motion -->
+<div class="script">
+    <h2>Script 11: Slow Motion</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void slowMotion() {
+    u32 *timeSpeed = (u32*) 0xA0000000; // Replace with proper time speed offset
+    *timeSpeed = 0.5; // Set time speed to half, for slow motion
+}
+
+void main() {
+    slowMotion();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 12: Teleport to Waypoint -->
+<div class="script">
+    <h2>Script 12: Teleport to Waypoint</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void teleportToWaypoint(u32 waypointX, u32 waypointY, u32 waypointZ) {
+    u32 *playerPosition = (u32*) 0x90000000; // Replace with proper position offset
+    playerPosition[0] = waypointX; // Set waypoint X position
+    playerPosition[1] = waypointY; // Set waypoint Y position
+    playerPosition[2] = waypointZ; // Set waypoint Z position
+}
+
+void main() {
+    teleportToWaypoint(500, 600, 700); // Teleport to waypoint coordinates (500, 600, 700)
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 13: Unlimited Sprint -->
+<div class="script">
+    <h2>Script 13: Unlimited Sprint</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlimitedSprint() {
+    u32 *sprint = (u32*) 0xB0000000; // Replace with proper sprint offset
+    *sprint = 9999; // Set sprint to unlimited
+}
+
+void main() {
+    unlimitedSprint();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 14: Super Jump -->
+<div class="script">
+    <h2>Script 14: Super Jump</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void superJump() {
+    u32 *jumpHeight = (u32*) 0xC0000000; // Replace with proper jump height offset
+    *jumpHeight = 100; // Set jump height to super
+}
+
+void main() {
+    superJump();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 15: Change Weather -->
+<div class="script">
+    <h2>Script 15: Change Weather</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void changeWeather(u32 weatherType) {
+    u32 *weather = (u32*) 0xD0000000; // Replace with proper weather offset
+    *weather = weatherType; // Set weather type
+}
+
+void main() {
+    changeWeather(1); // Change to rain, assuming 1 represents rain in this game
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 16: Unlock All Weapons -->
+<div class="script">
+    <h2>Script 16: Unlock All Weapons</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllWeapons() {
+    u32 *weapons = (u32*) 0xE0000000; // Replace with proper weapon unlock offset
+    *weapons = 1; // Unlock all weapons
+}
+
+void main() {
+    unlockAllWeapons();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 17: Instant Kill -->
+<div class="script">
+    <h2>Script 17: Instant Kill</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void instantKill() {
+    u32 *enemyHealth = (u32*) 0xF0000000; // Replace with proper enemy health offset
+    *enemyHealth = 0; // Set enemy health to 0 for instant kill
+}
+
+void main() {
+    instantKill();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 18: No Clip Mode -->
+<div class="script">
+    <h2>Script 18: No Clip Mode</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void noClip() {
+    u32 *collision = (u32*) 0x10000000; // Replace with proper collision offset
+    *collision = 0; // Disable collision detection for no clip mode
+}
+
+void main() {
+    noClip();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 19: Unlock All Levels -->
+<div class="script">
+    <h2>Script 19: Unlock All Levels</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllLevels() {
+    u32 *levels = (u32*) 0x11000000; // Replace with proper level unlock offset
+    *levels = 1; // Unlock all levels
+}
+
+void main() {
+    unlockAllLevels();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 20: Spawn Vehicle -->
+<div class="script">
+    <h2>Script 20: Spawn Vehicle</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void spawnVehicle(u32 vehicleID) {
+    u32 *vehicle = (u32*) 0x12000000; // Replace with proper vehicle spawn offset
+    *vehicle = vehicleID; // Spawn vehicle with given ID
+}
+
+void main() {
+    spawnVehicle(1); // Spawn vehicle with ID 1
+}
+        </code></pre>
+    </div>
+</div>
+
+  <!-- Script 21: Unlock All Achievements -->
+<div class="script">
+    <h2>Script 21: Unlock All Achievements</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllAchievements() {
+    u32 *achievements = (u32*) 0x13000000; // Replace with proper achievements offset
+    *achievements = 1; // Unlock all achievements
+}
+
+void main() {
+    unlockAllAchievements();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 22: Infinite Health -->
+<div class="script">
+    <h2>Script 22: Infinite Health</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void infiniteHealth() {
+    u32 *health = (u32*) 0x14000000; // Replace with proper health offset
+    *health = 9999999; // Set health to maximum for infinite health
+}
+
+void main() {
+    infiniteHealth();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 23: Spawn Item -->
+<div class="script">
+    <h2>Script 23: Spawn Item</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void spawnItem(u32 itemID) {
+    u32 *item = (u32*) 0x15000000; // Replace with proper item spawn offset
+    *item = itemID; // Spawn item with given ID
+}
+
+void main() {
+    spawnItem(1); // Spawn item with ID 1
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 24: No Recoil -->
+<div class="script">
+    <h2>Script 24: No Recoil</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void noRecoil() {
+    u32 *weaponRecoil = (u32*) 0x16000000; // Replace with proper weapon recoil offset
+    *weaponRecoil = 0; // Set weapon recoil to 0 for no recoil
+}
+
+void main() {
+    noRecoil();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 25: Infinite Ammo -->
+<div class="script">
+    <h2>Script 25: Infinite Ammo</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void infiniteAmmo() {
+    u32 *ammo = (u32*) 0x17000000; // Replace with proper ammo offset
+    *ammo = 9999; // Set ammo to infinite
+}
+
+void main() {
+    infiniteAmmo();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 26: Give All Vehicles -->
+<div class="script">
+    <h2>Script 26: Give All Vehicles</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void giveAllVehicles() {
+    u32 *vehicles = (u32*) 0x18000000; // Replace with proper vehicle unlock offset
+    *vehicles = 1; // Give all vehicles
+}
+
+void main() {
+    giveAllVehicles();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 27: Unlock All Skills -->
+<div class="script">
+    <h2>Script 27: Unlock All Skills</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllSkills() {
+    u32 *skills = (u32*) 0x19000000; // Replace with proper skill unlock offset
+    *skills = 1; // Unlock all skills
+}
+
+void main() {
+    unlockAllSkills();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 28: Freeze Enemy -->
+<div class="script">
+    <h2>Script 28: Freeze Enemy</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void freezeEnemy() {
+    u32 *enemyStatus = (u32*) 0x1A000000; // Replace with proper enemy status offset
+    *enemyStatus = 0x02; // Freeze enemy
+}
+
+void main() {
+    freezeEnemy();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 29: Max Score -->
+<div class="script">
+    <h2>Script 29: Max Score</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void maxScore() {
+    u32 *score = (u32*) 0x1B000000; // Replace with proper score offset
+    *score = 999999; // Set score to maximum
+}
+
+void main() {
+    maxScore();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 30: Infinite Money -->
+<div class="script">
+    <h2>Script 30: Infinite Money</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void infiniteMoney() {
+    u32 *money = (u32*) 0x1C000000; // Replace with proper money offset
+    *money = 999999; // Set money to infinite
+}
+
+void main() {
+    infiniteMoney();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 31: Fast Reload -->
+<div class="script">
+    <h2>Script 31: Fast Reload</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void fastReload() {
+    u32 *reloadTime = (u32*) 0x1D000000; // Replace with proper reload time offset
+    *reloadTime = 0; // Set reload time to 0 for fast reload
+}
+
+void main() {
+    fastReload();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 32: No Fall Damage -->
+<div class="script">
+    <h2>Script 32: No Fall Damage</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void noFallDamage() {
+    u32 *fallDamage = (u32*) 0x1E000000; // Replace with proper fall damage offset
+    *fallDamage = 0; // Set fall damage to 0
+}
+
+void main() {
+    noFallDamage();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 33: Unlock All Vehicles -->
+<div class="script">
+    <h2>Script 33: Unlock All Vehicles</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllVehicles() {
+    u32 *vehicles = (u32*) 0x1F000000; // Replace with proper vehicle unlock offset
+    *vehicles = 1; // Unlock all vehicles
+}
+
+void main() {
+    unlockAllVehicles();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 34: Give All Power-Ups -->
+<div class="script">
+    <h2>Script 34: Give All Power-Ups</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void giveAllPowerUps() {
+    u32 *powerUps = (u32*) 0x20000000; // Replace with proper power-up unlock offset
+    *powerUps = 1; // Unlock all power-ups
+}
+
+void main() {
+    giveAllPowerUps();
+}
+        </code></pre>
+    </div>
+</div>
+
+  <!-- Script 35: Infinite Boost -->
+<div class="script">
+    <h2>Script 35: Infinite Boost</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void infiniteBoost() {
+    u32 *boost = (u32*) 0x21000000; // Replace with proper boost offset
+    *boost = 999999; // Set boost to infinite
+}
+
+void main() {
+    infiniteBoost();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 36: Unlock All Weapons -->
+<div class="script">
+    <h2>Script 36: Unlock All Weapons</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllWeapons() {
+    u32 *weapons = (u32*) 0x22000000; // Replace with proper weapon unlock offset
+    *weapons = 1; // Unlock all weapons
+}
+
+void main() {
+    unlockAllWeapons();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 37: God Mode (Invincible) -->
+<div class="script">
+    <h2>Script 37: God Mode (Invincible)</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void godMode() {
+    u32 *health = (u32*) 0x23000000; // Replace with proper health offset
+    *health = 9999999; // Set health to a very high value
+}
+
+void main() {
+    godMode();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 38: Instant Kill -->
+<div class="script">
+    <h2>Script 38: Instant Kill</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void instantKill() {
+    u32 *enemyHealth = (u32*) 0x24000000; // Replace with proper enemy health offset
+    *enemyHealth = 0; // Set enemy health to 0 for instant kill
+}
+
+void main() {
+    instantKill();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 39: Unlock All Trophies -->
+<div class="script">
+    <h2>Script 39: Unlock All Trophies</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllTrophies() {
+    u32 *trophies = (u32*) 0x25000000; // Replace with proper trophies unlock offset
+    *trophies = 1; // Unlock all trophies
+}
+
+void main() {
+    unlockAllTrophies();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 40: Freeze Timer -->
+<div class="script">
+    <h2>Script 40: Freeze Timer</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void freezeTimer() {
+    u32 *timer = (u32*) 0x26000000; // Replace with proper timer offset
+    *timer = 0; // Freeze the timer
+}
+
+void main() {
+    freezeTimer();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 41: Unlock All Characters -->
+<div class="script">
+    <h2>Script 41: Unlock All Characters</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllCharacters() {
+    u32 *characters = (u32*) 0x27000000; // Replace with proper character unlock offset
+    *characters = 1; // Unlock all characters
+}
+
+void main() {
+    unlockAllCharacters();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 42: Super Speed -->
+<div class="script">
+    <h2>Script 42: Super Speed</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void superSpeed() {
+    u32 *speed = (u32*) 0x28000000; // Replace with proper speed offset
+    *speed = 999; // Set speed to a very high value for super speed
+}
+
+void main() {
+    superSpeed();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 43: Unlock All Maps -->
+<div class="script">
+    <h2>Script 43: Unlock All Maps</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllMaps() {
+    u32 *maps = (u32*) 0x29000000; // Replace with proper map unlock offset
+    *maps = 1; // Unlock all maps
+}
+
+void main() {
+    unlockAllMaps();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 44: Change Gravity -->
+<div class="script">
+    <h2>Script 44: Change Gravity</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void changeGravity() {
+    float *gravity = (float*) 0x2A000000; // Replace with proper gravity offset
+    *gravity = 0.1f; // Set gravity to a low value for reduced gravity
+}
+
+void main() {
+    changeGravity();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 45: Freeze AI -->
+<div class="script">
+    <h2>Script 45: Freeze AI</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void freezeAI() {
+    u32 *aiStatus = (u32*) 0x2B000000; // Replace with proper AI status offset
+    *aiStatus = 0; // Freeze AI by setting their status to 0
+}
+
+void main() {
+    freezeAI();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 46: Unlock All Upgrades -->
+<div class="script">
+    <h2>Script 46: Unlock All Upgrades</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllUpgrades() {
+    u32 *upgrades = (u32*) 0x2C000000; // Replace with proper upgrade unlock offset
+    *upgrades = 1; // Unlock all upgrades
+}
+
+void main() {
+    unlockAllUpgrades();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 47: Max Ammo for All Weapons -->
+<div class="script">
+    <h2>Script 47: Max Ammo for All Weapons</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void maxAmmoForAllWeapons() {
+    u32 *ammo = (u32*) 0x2D000000; // Replace with proper ammo offset
+    *ammo = 9999; // Set ammo to maximum for all weapons
+}
+
+void main() {
+    maxAmmoForAllWeapons();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 48: Instant Win -->
+<div class="script">
+    <h2>Script 48: Instant Win</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void instantWin() {
+    u32 *gameStatus = (u32*) 0x2E000000; // Replace with proper game win status offset
+    *gameStatus = 1; // Set game status to won
+}
+
+void main() {
+    instantWin();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 49: Unlock All Missions -->
+<div class="script">
+    <h2>Script 49: Unlock All Missions</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void unlockAllMissions() {
+    u32 *missions = (u32*) 0x2F000000; // Replace with proper mission unlock offset
+    *missions = 1; // Unlock all missions
+}
+
+void main() {
+    unlockAllMissions();
+}
+        </code></pre>
+    </div>
+</div>
+
+<!-- Script 50: Disable Recoil -->
+<div class="script">
+    <h2>Script 50: Disable Recoil</h2>
+    <div class="code-box">
+        <pre><code class="cpp">
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <psl1ght/types.h>
+#include <psl1ght/syscalls.h>
+#include <psl1ght/lv2.h>
+
+void disableRecoil() {
+    u32 *recoil = (u32*) 0x30000000; // Replace with proper recoil offset
+    *recoil = 0; // Disable recoil by setting value to 0
+}
+
+void main() {
+    disableRecoil();
+}
+        </code></pre>
+    </div>
+</div>
+
+    </main>
+
+    <script>
+        // JavaScript to handle future functionalities if needed
+        document.addEventListener("DOMContentLoaded", () => {
+            // You can add interactivity here, such as scroll animations or script toggles
+        });
+    </script>
+</body>
+</html>
 
