@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Rust Cheat Sheet</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/dark.min.css">
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+
+    <header>
+        <h1>Learning Rust - Orikyx DevSec Hub</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../cybersecurity.html">Cybersecurity</a></li>
+            <li><a href="learningcpp.html" class="active">C++ Cheat Sheet</a></li>
+            <li><a href="../learningcode.html">Learning Code</a></li>
+            <li><a href="learningcsharp.html">Learning C#</a></li>
+            <li><a href="../ps3programming.html">PS3 Programming</a></li>
+        </ul>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-btn" onclick="toggleSidebar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Learning Rust Cheat Sheet</h1>
+
+        <!-- BASIC LEVEL -->
+        <section>
+            <h2>🔹 Basic Concepts</h2>
+
+            <h3>1️⃣ Hello World</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, World!";
+    return 0;
+}
+            </code></pre>
+
+            <h3>2️⃣ Variables</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 10;
+    float y = 5.5;
+    char z = 'A';
+    cout << x << " " << y << " " << z;
+    return 0;
+}
+            </code></pre>
+        </section>
+
+        <!-- BEGINNER LEVEL -->
+        <section>
+            <h2>🔹 Beginner Concepts</h2>
+
+            <h3>3️⃣ If-Else Statements</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    if (number > 0) {
+        cout << "Positive";
+    } else if (number < 0) {
+        cout << "Negative";
+    } else {
+        cout << "Zero";
+    }
+
+    return 0;
+}
+            </code></pre>
+
+            <h3>4️⃣ Loops</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        cout << "Number: " << i << endl;
+    }
+    return 0;
+}
+            </code></pre>
+        </section>
+
+        <!-- INTERMEDIATE LEVEL -->
+        <section>
+            <h2>🔹 Intermediate Concepts</h2>
+
+            <h3>5️⃣ Functions</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+void greet() {
+    cout << "Hello from a function!";
+}
+
+int main() {
+    greet();
+    return 0;
+}
+            </code></pre>
+
+            <h3>6️⃣ Arrays</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    
+    for (int i = 0; i < 5; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+            </code></pre>
+        </section>
+
+        <!-- EXPERT LEVEL -->
+        <section>
+            <h2>🔹 Expert Concepts</h2>
+
+            <h3>7️⃣ Pointers</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 10;
+    int* ptr = &num;
+
+    cout << "Value: " << num << endl;
+    cout << "Address: " << ptr << endl;
+    cout << "Pointer Value: " << *ptr << endl;
+    
+    return 0;
+}
+            </code></pre>
+
+            <h3>8️⃣ Object-Oriented Programming</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+class Car {
+public:
+    string brand;
+    int year;
+
+    void showDetails() {
+        cout << "Brand: " << brand << ", Year: " << year;
+    }
+};
+
+int main() {
+    Car myCar;
+    myCar.brand = "Tesla";
+    myCar.year = 2023;
+    myCar.showDetails();
+    
+    return 0;
+}
+            </code></pre>
+        </section>
+
+        <!-- MASTER LEVEL -->
+        <section>
+            <h2>🔹 Master Concepts</h2>
+
+            <h3>9️⃣ Multi-Threading</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+#include <thread>
+
+void sayHello() {
+    std::cout << "Hello from a thread!" << std::endl;
+}
+
+int main() {
+    std::thread t(sayHello);
+    t.join();
+    
+    return 0;
+}
+            </code></pre>
+
+            <h3>🔟 Templates in C++</h3>
+            <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
+
+template <typename T>
+T add(T a, T b) {
+    return a + b;
+}
+
+int main() {
+    cout << add(10, 5) << endl;
+    cout << add(3.2, 2.8) << endl;
+    return 0;
+}
+            </code></pre>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Orikyx DevSec Hub. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
