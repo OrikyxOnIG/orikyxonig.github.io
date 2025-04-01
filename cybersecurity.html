@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Page - Orikyx DevSec Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+        <h2>Orikyx's Cybersecurity Concepts</h2>
+        <ul>
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="#encryption">Encryption</a></li>
+            <li><a href="#hashing">Hashing</a></li>
+            <li><a href="#ssl">SSL/TLS</a></li>
+            <li><a href="#input-validation">Input Validation</a></li>
+            <li><a href="#network-programming">Network Programming</a></li>
+            <li><a href="#authentication">Authentication</a></li>
+            <li><a href="#encryption-advanced">Advanced Encryption</a></li>
+            <li><a href="#sql-injection">SQL Injection Prevention</a></li>
+            <li><a href="#xss-prevention">XSS Prevention</a></li>
+            <li><a href="#session-management">Session Management</a></li>
+            <li><a href="#web-security">Web Security Best Practices</a></li>
+            <li><a href="#csrf-prevention">CSRF Prevention</a></li>
+            <li><a href="#dns-spoofing">DNS Spoofing Mitigation</a></li>
+            <li><a href="#malware-analysis">Malware Analysis</a></li>
+            <li><a href="#privilege-escalation">Privilege Escalation</a></li>
+            <li><a href="#zero-day-exploits">Zero-Day Exploits</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <header>
+            <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+            <h1>Cybersecurity Page - Orikyx DevSec Hub</h1>
+        </header>
+
+        <main>
+            <section id="encryption">
+                <h2>Encryption</h2>
+                <p>Encryption is a process of converting data into a secret code to prevent unauthorized access.</p>
+                <pre><code class="language-python">
+# Python example for AES encryption
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Random import get_random_bytes
+
+key = get_random_bytes(16)
+cipher = AES.new(key, AES.MODE_CBC)
+data = b"Sensitive Data"
+encrypted = cipher.encrypt(pad(data, AES.block_size))
+                </code></pre>
+            </section>
+
+            <section id="hashing">
+                <h2>Hashing</h2>
+                <p>Hashing is the process of converting data into a fixed-size value or key, which is typically a hash value.</p>
+                <pre><code class="language-python">
+# Python example for SHA256 hashing
+import hashlib
+
+data = "Password123"
+hashed_data = hashlib.sha256(data.encode()).hexdigest()
+                </code></pre>
+            </section>
+
+            <section id="ssl">
+                <h2>SSL/TLS</h2>
+                <p>SSL/TLS provides secure communication over a computer network. It's used to encrypt the data transferred between clients and servers.</p>
+                <pre><code class="language-python">
+# Python example for SSL context creation
+import ssl
+import socket
+
+context = ssl.create_default_context()
+connection = context.wrap_socket(socket.socket(socket.AF_INET), server_hostname="example.com")
+connection.connect(("example.com", 443))
+                </code></pre>
+            </section>
+
+            <section id="input-validation">
+                <h2>Input Validation</h2>
+                <p>Input validation ensures that the input provided by users is sanitized and doesn't contain malicious data.</p>
+                <pre><code class="language-python">
+# Python example for input validation
+import re
+
+email = "test@example.com"
+if re.match(r"[^@]+@[^@]+\.[^@]+", email):
+    print("Valid email!")
+else:
+    print("Invalid email!")
+                </code></pre>
+            </section>
+
+            <section id="network-programming">
+                <h2>Network Programming</h2>
+                <p>Network programming refers to writing software that allows data to be sent and received over a network, such as creating servers or clients for communication.</p>
+                <pre><code class="language-python">
+# Python example for a simple server
+import socket
+
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.bind(("0.0.0.0", 8080))
+server_socket.listen(5)
+
+print("Server listening on port 8080...")
+client_socket, addr = server_socket.accept()
+print(f"Connection from {addr}")
+client_socket.send(b"Hello, Client!")
+client_socket.close()
+                </code></pre>
+            </section>
+
+            <section id="authentication">
+                <h2>Authentication</h2>
+                <p>Authentication is the process of verifying the identity of a user or system.</p>
+                <pre><code class="language-python">
+# Python example for simple username/password authentication
+user_db = {"admin": "password123", "user": "mypassword"}
+
+username = input("Enter username: ")
+password = input("Enter password: ")
+
+if user_db.get(username) == password:
+    print("Authentication successful!")
+else:
+    print("Authentication failed.")
+                </code></pre>
+            </section>
+
+            <section id="encryption-advanced">
+                <h2>Advanced Encryption</h2>
+                <p>Advanced encryption techniques, such as RSA, offer secure data transfer using public and private keys.</p>
+                <pre><code class="language-python">
+# Python example for RSA encryption
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+
+key = RSA.generate(2048)
+private_key = key.export_key()
+public_key = key.publickey().export_key()
+
+cipher = PKCS1_OAEP.new(RSA.import_key(public_key))
+encrypted = cipher.encrypt(b"Sensitive data")
+                </code></pre>
+            </section>
+
+            <section id="sql-injection">
+                <h2>SQL Injection Prevention</h2>
+                <p>SQL Injection is a code injection technique that exploits vulnerabilities in an application's software by manipulating SQL queries.</p>
+                <pre><code class="language-python">
+# Python example for preventing SQL injection using parameterized queries
+import sqlite3
+
+connection = sqlite3.connect('example.db')
+cursor = connection.cursor()
+
+username = "admin"
+password = "password123"
+
+cursor.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
+result = cursor.fetchone()
+
+if result:
+    print("Login successful!")
+else:
+    print("Invalid login.")
+                </code></pre>
+            </section>
+
+            <section id="xss-prevention">
+                <h2>XSS Prevention</h2>
+                <p>Cross-Site Scripting (XSS) attacks inject malicious scripts into web pages viewed by other users.</p>
+                <pre><code class="language-javascript">
+/* JavaScript example for preventing XSS by sanitizing user input */
+function sanitizeInput(input) {
+    return input.replace(/<script.*?>.*?<\/script>/g, "");
+}
+
+const userInput = "<script>alert('XSS Attack!');</script>";
+console.log(sanitizeInput(userInput)); // Returns empty string
+                </code></pre>
+            </section>
+
+            <section id="session-management">
+                <h2>Session Management</h2>
+                <p>Session management involves securely handling user sessions, including token management and session expiration.</p>
+                <pre><code class="language-python">
+# Python example for session token generation
+import secrets
+
+session_token = secrets.token_urlsafe(16)
+print(f"Session Token: {session_token}")
+                </code></pre>
+            </section>
+
+            <section id="web-security">
+                <h2>Web Security Best Practices</h2>
+                <p>Web security best practices include securing cookies, using HTTPS, and preventing attacks like CSRF and XSS.</p>
+                <pre><code class="language-python">
+# Python example for secure cookie handling with Flask
+from flask import Flask, make_response
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    resp = make_response("Hello, world!")
+    resp.set_cookie('username', 'admin', secure=True, httponly=True)
+    return resp
+                </code></pre>
+            </section>
+
+
+            <section id="csrf-prevention">
+                <h2>CSRF Prevention</h2>
+                <p>Cross-Site Request Forgery (CSRF) attacks trick a user into performing actions on a web application where they are authenticated.</p>
+                <pre><code class="language-python">
+# Python example using Flask to implement CSRF protection
+from flask import Flask, session
+from flask_wtf.csrf import CSRFProtect
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+csrf = CSRFProtect(app)
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    # Handle form submission
+    return "Form submitted!"
+                </code></pre>
+            </section>
+
+            <section id="dns-spoofing">
+                <h2>DNS Spoofing Mitigation</h2>
+                <p>DNS Spoofing occurs when a malicious actor manipulates DNS queries to redirect users to fraudulent sites. Mitigation involves using DNSSEC (Domain Name System Security Extensions).</p>
+                <pre><code class="language-shell">
+# DNSSEC is enabled on the server for DNS Spoofing mitigation
+# Command to check if DNSSEC is enabled on Linux
+dig +dnssec example.com
+                </code></pre>
+            </section>
+
+            <section id="malware-analysis">
+                <h2>Malware Analysis</h2>
+                <p>Malware analysis involves examining malicious software to understand its behavior, origins, and impacts. Static and dynamic analysis are the two primary types of analysis.</p>
+                <pre><code class="language-python">
+# Static analysis using Python's pefile to inspect a Windows executable (PE format)
+import pefile
+
+pe = pefile.PE("malware.exe")
+for entry in pe.DIRECTORY_ENTRY_IMPORT:
+    print(f"Imported DLL: {entry.dll.decode()}")
+                </code></pre>
+            </section>
+
+            <section id="privilege-escalation">
+                <h2>Privilege Escalation</h2>
+                <p>Privilege escalation occurs when an attacker gains higher privileges than intended, such as administrative or root access. Mitigation involves hardening system permissions and monitoring for suspicious activity.</p>
+                <pre><code class="language-bash">
+# Example of using sudo to escalate privileges on Linux
+# Always avoid giving unnecessary sudo access
+sudo su -
+                </code></pre>
+            </section>
+
+            <section id="zero-day-exploits">
+                <h2>Zero-Day Exploits</h2>
+                <p>A zero-day exploit refers to an attack that takes advantage of a vulnerability before the vendor is aware of it and can patch the issue.</p>
+                <pre><code class="language-python">
+# Example of vulnerability exploitation (educational)
+# Never use this code in production, it's just for understanding the concept
+import socket
+
+target_ip = "target_ip"
+target_port = 80
+
+# Simple script to demonstrate an unpatched vulnerability being exploited
+# Note: This is for demonstration purposes only
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect((target_ip, target_port))
+sock.send(b"GET / HTTP/1.1\r\nHost: vulnerable-site.com\r\n\r\n")
+response = sock.recv(1024)
+print(response)
+                </code></pre>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Orikyx DevSec Hub</p>
+        </footer>
+    </div>
+</body>
+</html>

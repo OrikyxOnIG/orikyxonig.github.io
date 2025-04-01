@@ -1,0 +1,295 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Import custom font */
+@font-face {
+    font-family: 'BatmanBeyond';
+    src: url('assets/fonts/batmfo__.ttf') format('truetype'); /* Ensure the path is correct */
+}
+
+/* Body styling */
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'BatmanBeyond', sans-serif;
+    background-color: #111; /* Dark background */
+    color: #e1e1e1; /* Light text */
+}
+
+/* Header Styling */
+header {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust the height based on your image */
+    background: url('images/orikyx.png') no-repeat center center/cover; /* Image background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem; /* Larger font size */
+    color: red; /* Red text */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Optional: Adds a shadow for readability */
+    font-family: 'BatmanBeyond', sans-serif; /* Custom font */
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222; /* Dark sidebar */
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: left;
+    color: white;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.sidebar ul li a:hover {
+    color: red; /* Red hover effect */
+}
+
+.sidebar ul li.active a {
+    color: red;
+    font-weight: bold;
+}
+
+/* Main content */
+
+main {
+    padding-bottom: 50px; /* Ensure space for the footer */
+    padding-top: 20px; /* Optional: Add space on top */
+    min-height: calc(100vh - 60px); /* Adjust this based on your header height */
+    box-sizing: border-box;
+}
+
+.main-content {
+    margin-left: 260px;
+    padding: 20px;
+}
+
+/* Card Container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Individual Card Styling */
+.card {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Title */
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: red; /* Red card title */
+}
+
+/* Card Description */
+.card p {
+    font-size: 1rem;
+    color: #ccc; /* Light text */
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    padding: 15px;
+    background-color: #222; /* Black background */
+    color: white;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 10; /* Ensure footer appears above content */
+}
+
+.menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222; /* Dark background for the button */
+    border: 2px solid red; /* Red border */
+    border-radius: 5px;
+    width: 50px; /* Adjust width */
+    height: 50px; /* Adjust height */
+    cursor: pointer;
+    position: absolute;
+    left: 20px; /* Left alignment */
+    top: 20px; /* Top alignment */
+    transition: all 0.3s ease;
+    z-index: 1100; /* Ensure it's above the sidebar */
+}
+
+.menu-btn:hover {
+    background-color: red; /* Red background on hover */
+    border-color: white; /* White border on hover */
+}
+
+.menu-btn .bar {
+    background-color: white; /* White color for the bars */
+    width: 30px;
+    height: 4px;
+    margin: 6px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Animation for Menu Button Bars when the menu is open */
+.menu-btn.open .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg); /* Top bar rotated */
+}
+
+.menu-btn.open .bar:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+}
+
+.menu-btn.open .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg); /* Bottom bar rotated */
+}
+
+/* Button Styling */
+button {
+    background-color: #222; /* Dark background for the button */
+    color: white; /* White text color */
+    border: 2px solid red; /* Red border to match theme */
+    border-radius: 5px;
+    padding: 10px 20px; /* Adjust padding for a nice button size */
+    font-family: 'batmfo__', sans-serif; /* Use Batman Beyond-like font */
+    font-size: 16px; /* Set font size */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: red; /* Background turns red when hovered */
+    color: #222; /* Text color changes to dark for contrast */
+    border-color: white; /* Border color changes to white */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Active Button (When clicked) */
+button:active {
+    transform: scale(0.98); /* Shrink slightly when clicked */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Normal shadow when active */
+}
+
+button:disabled {
+    background-color: #444; /* Dark gray for disabled state */
+    border-color: #888; /* Lighter gray border */
+    color: #888; /* Lighter gray text */
+    cursor: not-allowed; /* Make cursor indicate the button is not clickable */
+    box-shadow: none; /* Remove shadow when disabled */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .menu-btn {
+        left: 10px; /* Adjust left alignment on small screens */
+        top: 10px; /* Adjust top alignment */
+        width: 40px; /* Adjust width */
+        height: 40px; /* Adjust height */
+    }
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    button {
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Adjust font size */
+    }
+}
+
+/* Scrollable Sidebar */
+.sidebar ul {
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+section {
+    padding: 20px;
+    border-bottom: 1px solid #444;
+}
+
+section h2 {
+    font-size: 1.5rem;
+    color: #e74c3c;
+}
+
+section h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.concept {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+pre {
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+}
